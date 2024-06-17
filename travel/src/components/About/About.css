@@ -1,0 +1,193 @@
+.About {
+    height: 596px;
+    background-color: #F7F8FC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.About-containAll {
+    height: 356px;
+    width: 1103px;
+    display: flex;
+}
+
+.About-heading {
+    height: 268px;
+    width: 394px;
+}
+
+.About-heading h1 {
+
+    width: 387px;
+    height: 108px;
+
+
+    font-family: 'Volkhov';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 54px;
+
+    color: #222222;
+
+}
+
+.About-heading p {
+
+    height: 64px;
+    width: 394px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+
+    color: #666666;
+
+}
+
+
+.About .prenext-btn {
+    gap: 32px;
+    width: 112px;
+    height: 40px;
+    margin-top: 1rem;
+}
+
+.About .btn-next {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FA7436;
+}
+
+.About .btn-next img {
+    margin-bottom: 5px;
+    margin-left: -2px;
+}
+
+.About .btn-previous {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 2px solid #999999;
+}
+
+.About .btn-previous img {
+    margin-bottom: 5px;
+    margin-left: -2px;
+}
+
+.About-client1 {
+    width: 541px;
+    height: 279px;
+    margin-left: 120px;
+    position: absolute;
+}
+
+.About-review {
+    height: 245px;
+    width: 504px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.About-review .About-description {
+
+    width: 402px;
+    height: 96px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+
+    color: #444444;
+
+    padding: 28px 68px 121px 34px;
+
+}
+
+.About-review .username {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #222222;
+    padding-left: 34px;
+
+}
+
+.About-review .userlocation {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #666666;
+    padding-left: 34px;
+
+
+}
+
+.About-client1 img {
+    z-index: 1;
+    position: absolute;
+}
+
+.About-client2 {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 502px;
+    height: 232px;
+
+    border: 2px solid rgba(102, 102, 102, 0.08);
+    filter: drop-shadow(0px 10px 30px rgba(34, 34, 34, 0.35));
+    border-radius: 10px;
+
+    margin: 124px 0 0 87px;
+
+}
+
+.About-client2 .username {
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #222222;
+
+    opacity: 0.5;
+
+    margin-top: 156px;
+    margin-left: 34px;
+
+}
+
+.About-client2 .userdetail {
+    margin-top: 6px;
+    margin-left: 34px;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #666666;
+
+    opacity: 0.5;
+
+}

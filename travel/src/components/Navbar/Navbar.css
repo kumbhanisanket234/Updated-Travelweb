@@ -1,0 +1,84 @@
+.navbar-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    transition: top 0.5s;
+    background-color: white;
+    border-bottom: 2px solid #FA7436;
+}
+
+.navbar {
+    height: 114px;
+    width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.navbar .logo {
+    /* position: absolute;
+    left: 0; */
+    font-weight: bold;
+    font-size: 24px;
+    box-shadow: none;
+}
+
+.list ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.navitems li {
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.navbar .login {
+    /* position: absolute;
+    right: 100px; */
+    color: #FD8D3A;
+    box-shadow: none;
+}
+
+.navbar .signup {
+    /* position: absolute;
+    right: 0; */
+    background-color: #FA7436;
+    color: #FFFFFF;
+    box-shadow: none;
+}
+
+.navlink:hover {
+    text-decoration: none;
+    color: #FA7436;
+}
+
+.signup-hover:hover {
+    color: white !important;
+}
+
+.Hero-btncontain {
+    display: flex;
+    /* align-items: end; */
+    justify-content: space-between;
+}
+
+/* Base styles remain unchanged */
+
+.navbar-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.navitems.open {
+    display: flex !important;
+}
