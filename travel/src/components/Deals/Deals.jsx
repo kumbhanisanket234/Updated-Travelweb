@@ -58,8 +58,8 @@ function Dealsdetails() {
         </div>
 
         <div className="prenext-btn justify-content-center d-flex">
-          <button className="btn-previous btn btn-default" disabled={currentPage <= 1 ? true : false} onClick={handlePreviousBtn} style={active ? { backgroundColor: "#FA7436" } : null}><i class="fa-solid fa-arrow-left"></i></button>
-          <button className="btn-next btn btn-default" disabled={currentPage >= pages ? true : false} onClick={handleNextBtn} style={!active ? { backgroundColor: "#FA7436" } : { backgroundColor: "white" }}><i class="fa-solid fa-arrow-right"></i></button>
+          <button className="btn-previous btn btn-default" id='btn-previous' disabled={currentPage <= 1 ? true : false} onClick={handlePreviousBtn} style={active ? { backgroundColor: "#FA7436" } : null}><i class="fa-solid fa-arrow-left"></i></button>
+          <button className="btn-next btn btn-default" id='btn-next' disabled={currentPage >= pages ? true : false} onClick={handleNextBtn} style={!active ? { backgroundColor: "#FA7436" } : { backgroundColor: "white" }}><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 

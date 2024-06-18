@@ -94,7 +94,7 @@
     background: #FFFFFF;
     width: 841px;
     height: 124px;
-    
+
     background: #FFFFFF;
     box-shadow: 0px 2px 80px 2px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
@@ -104,7 +104,7 @@
     /* Content */
 }
 
-.content{
+.content {
     /* position: absolute; */
     width: 793px;
     height: 60px;
@@ -117,39 +117,44 @@
     /* background-color: #FA7436; */
 }
 
-.content .btn{
+.content .btn {
     background-color: #FA7436;
     border: none;
 }
 
-.afterpic{
+.afterpic {
     display: flex;
     /* justify-content: center;
     align-items: center; */
 }
 
-.afterpic img{
+.afterpic img {
     height: 7px;
     margin-top: 0.6rem;
     margin-left: 0.2rem;
 }
 
-.topicname{
+.topicname {
     font-size: 16px;
     font-weight: 700;
 }
 
-.que{
+.que {
     font-size: 12px;
 }
 
-.navbar-main2{
+.navbar-main2 {
     margin-top: 56px;
     display: flex;
     justify-content: center;
 }
 
-.discover-btn:hover{
+.discover-btn:hover {
     background-color: #FA7436;
     color: white;
+}
+
+#btn-explore,
+#btn-discover {
+    box-shadow: none;
 }

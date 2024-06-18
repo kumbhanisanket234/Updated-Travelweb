@@ -1,7 +1,7 @@
 .Blogs {
     height: 805px;
-    background-color: #FEFCFB;
-    display: flex;
+    background-color: hsl(20, 60%, 99%);
+    /* display: flex; */
     justify-content: center;
 }
 
@@ -30,9 +30,9 @@
 }
 
 .Blogs-cards {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
-    gap: 30px;
+    gap: 30px; 
     margin-top: 64px;
 }
 
@@ -85,12 +85,10 @@
 }
 
 .Blogs-ellipse1 {
-
     width: 10px;
     height: 10px;
     background: #E5E5E5;
     border-radius: 50%;
-
 }
 
 .Blogs-ellipse1.active {

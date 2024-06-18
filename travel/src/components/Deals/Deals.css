@@ -70,13 +70,13 @@
     border-radius: 8px;
 }
 
-.Deal-box #location-img{
+.Deal-box #location-img {
     height: 290px;
     width: 270px;
     border-radius: 10px;
 }
 
-.Deal-box img{
+.Deal-box img {
     object-fit: cover;
 }
 
@@ -114,7 +114,7 @@
 .Deal-City img {
     width: 15px;
     height: 15px;
-    margin-top: 5px;
+    margin-top: 2.5px;
     margin-right: 5px;
 }
 
@@ -152,33 +152,35 @@
     margin-left: -2px;
 }
 
-.btn-previous{
+.btn-previous {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #FFFFFF;
     border: 2px solid black;
+    
 }
 
-.btn-previous img{
-    margin-bottom: 5px;
-    margin-left: -2px;
+#btn-next,
+#btn-previous {
+    box-shadow: none;
+
 }
 
-.Deal-detail p{
-width: 433px;
-height: 64px;
+.Deal-detail p {
+    width: 433px;
+    height: 64px;
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 32px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
 
-text-align: center;
+    text-align: center;
 
-/* Paragraph */
-color: #666666;
+    /* Paragraph */
+    color: #666666;
 
 
 }

@@ -29,7 +29,7 @@ function Hero() {
                         <p>A Team of experienced tourism professionals will provide you with the best advice and tips for your desire place. </p>
                     </div>
                     <div className="btndiscover">
-                        <button className="btn btn-primary discover-btn">Discover Now</button>
+                        <button className="btn btn-primary discover-btn" id='btn-discover'>Discover Now</button>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@ function Hero() {
                             </div>
                             <p className='que'>Number of guest</p>
                         </div>
-                        <button className="btn btn-primary">Explore Now</button>
+                        <button className="btn btn-primary" id='btn-explore'>Explore Now</button>
                     </div>
                 </div>
             </div>

@@ -79,7 +79,7 @@ function Navbar() {
 
 
     return (
-        <div className="navbar-main" style={{ top: visible ? '0' : '-114px', transition: 'top 0.5s' }}>
+        <div className="navbar-main" style={{ zIndex: '1001', top: visible ? '0' : '-114px', transition: 'top 0.5s' }}>
             <div className="navbar">
                 <div className="btn-logo">
                     <button className="btn btn-default logo navlink" onClick={() => { scrollToComponent('hero') }}>Trabook</button>

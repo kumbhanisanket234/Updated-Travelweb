@@ -1,63 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import './Blogs.css'
-import { Blogscontain } from './Blogscontain'
+import React, { useEffect, useState, useRef } from 'react';
+import './Blogs.css';
+import { Blogscontain } from './Blogscontain';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 function Blogs() {
-  const [pageLimit] = useState(4);
-  const [startIndex, setStartIndex] = useState(0);
-  const [lastIndex, setLastIndex] = useState(pageLimit);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0); 
+  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const carouselRef = useRef(null);
+  const dotLength = [];
 
-  const pages = [];
-
-  for (let i = 0; i < Math.ceil(Blogscontain.length / pageLimit); i++) {
-    pages.push(i + 1);
-  }
-
-  const handleNextPage = () => {
-    setStartIndex(lastIndex);
-    setLastIndex(lastIndex + pageLimit);
-    setCurrentPage((prev) => prev + 1);
-  };
-
-  const handlePreviousPage = () => {
-    setStartIndex(startIndex - pageLimit);
-    setLastIndex(lastIndex - pageLimit);
-    setCurrentPage((prev) => prev - 1);
-  };
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
+  const responsive = {
+    superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 4 },
+    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
+    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    const handleKeyDown = (e) => {
-      if (scrollPosition >= 4145 && scrollPosition <= 4770) {
-        if (e.key === 'ArrowRight' && currentPage < pages[Math.ceil(Blogscontain.length / pageLimit) - 1]) {
-          handleNextPage();
-        } else if (e.key === 'ArrowLeft' && currentPage > 1) {
-          handlePreviousPage();
-        }
-      }
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 3000) {
+      setItemsPerPage(responsive.superLargeDesktop.items);
+    } else if (screenWidth >= 1024) {
+      setItemsPerPage(responsive.desktop.items);
+    } else if (screenWidth >= 464) {
+      setItemsPerPage(responsive.tablet.items);
+    } else {
+      setItemsPerPage(responsive.mobile.items);
     }
+  }, []);
 
-    window.addEventListener('keydown', handleKeyDown)
+  const handleDotClick = (index) => {
+    setCurrentPage(index);
+    carouselRef.current.goToSlide(index * itemsPerPage);
+  };
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('scroll', handleScroll);
-    };
+  const handleSlideChange = (currentSlide) => {
+    console.log(currentSlide)
+    setCurrentPage(Math.ceil(currentSlide / itemsPerPage));
+  };
 
-  }, [currentPage, scrollPosition]);
-
-  const handlePageClick = (index) => {
-    setCurrentPage(index + 1)
-    setStartIndex((index) * pageLimit)
-    setLastIndex((index) * pageLimit + pageLimit)
+  for (let i = 0; i < Math.ceil(Blogscontain.length / itemsPerPage); i++) {
+    dotLength.push(i);
   }
 
   return (
@@ -68,32 +52,36 @@ function Blogs() {
         </div>
 
         <div className="Blogs-cards">
-          {
-            Blogscontain.slice(startIndex, lastIndex).map((items, index) => {
-              return (
-                <div className="Blogs-card1">
-                  <img src={items.img} alt="" />
-                  <p className='Blogs-desc'>{items.caption}</p>
-                  <p className='Blogs-date'>{items.date}</p>
-                </div>
-              )
-            })
-          }
+          <Carousel
+            responsive={responsive}
+            keyBoardControl={true}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            afterChange={(previousSlide, { currentSlide }) => handleSlideChange(currentSlide)}
+            slidesToSlide={itemsPerPage}
+            ref={carouselRef}
+          >
+            {Blogscontain.map((items, index) => (
+              <div className="Blogs-card1 m-auto" key={index}>
+                <img src={items.img} alt="" />
+                <p className='Blogs-desc'>{items.caption}</p>
+                <p className='Blogs-date'>{items.date}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
 
         <div className="Blogs-ellipse-container">
-          {
-            pages.map((value, index) => {
-              return (
-                <div className={`Blogs-ellipse1 ${currentPage === value ? 'active' : ''}`} onClick={() => handlePageClick(index)}></div>
-              )
-            })
-          }
-
+          {dotLength.map((_, index) => (
+            <div
+              key={index}
+              className={`Blogs-ellipse1 ${currentPage === index ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            ></div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Blogs
+export default Blogs;

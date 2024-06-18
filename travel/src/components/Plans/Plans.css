@@ -110,7 +110,7 @@
 .Plans-price img {
     width: 16px;
     height: 16px;
-    margin-top: 5px;
+    margin-top: 2.5px;
 }
 
 .Plans .detail-container {
@@ -146,22 +146,16 @@
     background-color: #FA7436;
 }
 
-.Plans .btn-next img {
-    margin-bottom: 5px;
-    margin-left: -2px;
-}
-
 .Plans .btn-previous {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #FFFFFF;
-    border: 2px solid #999999;
+    border: 2px solid black;
 }
 
-.Plans .btn-previous img {
-    margin-bottom: 5px;
-    margin-left: -2px;
+#btn-next,#btn-previous{
+    box-shadow: none;
 }
 
 .Plans-detail p {
