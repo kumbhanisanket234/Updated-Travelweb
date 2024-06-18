@@ -77,6 +77,7 @@ function Login() {
         <>
             <div className="container mt-5">
                 <div className="signup-form">
+                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i class="fa-solid fa-arrow-left"></i></button> 
                     <div className="fields-container">
                         <h1 className="text-center">Login</h1>
                         <form className='form' onSubmit={handleSubmit}>

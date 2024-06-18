@@ -33,8 +33,6 @@ function Blogs() {
   };
 
   useEffect(() => {
-    console.log(scrollPosition)
-
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     const handleKeyDown = (e) => {
@@ -91,7 +89,7 @@ function Blogs() {
               )
             })
           }
-          
+
         </div>
       </div>
     </div>

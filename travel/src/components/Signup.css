@@ -185,3 +185,6 @@ body {
     text-align: center;
 }
 
+#back-btn{
+    box-shadow: none;
+}

@@ -71,7 +71,7 @@ function Signup() {
 
         axios.post('http://localhost:3001/sendOTP', { email })
             .then(response => {
-                console.log("response send otp",response)
+                console.log("response send otp", response)
                 if (response.data.status === "FAILED") {
                     alert(response.data.message)
                 }
@@ -125,7 +125,7 @@ function Signup() {
                                         console.log(error);
                                         alert(error.response.data);
                                     })
-                                
+
                             } else {
                                 alert(response.data.message);
                             }
@@ -161,6 +161,7 @@ function Signup() {
         <div className="container mt-3">
             <div className="signup-form">
                 <div className="fields-container">
+                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i class="fa-solid fa-arrow-left"></i></button>
                     <h1 className="text-center">Sign Up</h1>
                     <div className='form'>
                         <div className='d-flex gap-2'>
