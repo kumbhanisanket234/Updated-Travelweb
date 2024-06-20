@@ -19,25 +19,25 @@ import Footer from './components/Footer/Footer'
 function Home() {
     return (
         <>
-                <Routes>
-                    <Route path='/' element={
-                        <>
-                            <Navbar />
-                            <Hero />
-                            <Things />
-                            <Deals />
-                            <Plans />
-                            <About />
-                            <Blogs />
-                            <Footer />
-                        </>
-                    } />
-                    <Route path="/signup" Component={Signup}></Route>
-                    <Route path="/login" Component={Login}></Route>
-                    <Route path='/forgotpassword' Component={Forgotpassword}></Route>
-                    <Route path='/resetpassword/:id/:token' Component={Resetpassword}></Route>
-                    <Route path='*' Component={Error}></Route>
-                </Routes>
+            <Routes>
+                <Route path='/' element={
+                    <>
+                        <Navbar />
+                        <Hero />
+                        <Things />
+                        <Deals />
+                        <Plans />
+                        <About />
+                        <Blogs />
+                        <Footer />
+                    </>
+                } />
+                <Route path="/signup" Component={Signup}></Route>
+                <Route path="/login" Component={Login}></Route>
+                <Route path='/forgotpassword' Component={Forgotpassword}></Route>
+                <Route path='/resetpassword/:id/:token' Component={Resetpassword}></Route>
+                <Route path='*' Component={Error}></Route>
+            </Routes>
 
         </>
     )

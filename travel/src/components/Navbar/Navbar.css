@@ -5,15 +5,22 @@
     align-items: center;
     z-index: 1000;
     position: fixed;
-    top: 0;
-    transition: top 0.5s;
+    transition: 0.5s;
     background-color: white;
     border-bottom: 2px solid #FA7436;
 }
 
+.visible-nav {
+    top: 0;
+}
+
+.invisible-nav {
+    top: -114px;
+}
+
 .navbar {
-    height: 114px;
-    width: 1170px;
+    height: 7.125rem;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,10 +28,8 @@
 }
 
 .navbar .logo {
-    /* position: absolute;
-    left: 0; */
     font-weight: bold;
-    font-size: 24px;
+    font-size: 1.5rem;
     box-shadow: none;
 }
 
@@ -33,31 +38,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 2rem;
+    padding-left: 0;
+   
 }
 
 .navitems li {
-    margin-top: 16px;
+    margin-top: 1rem;
     cursor: pointer;
 }
 
 .navbar .login {
-    /* position: absolute;
-    right: 100px; */
     color: #FD8D3A;
     box-shadow: none;
 }
 
 .navbar .signup {
-    /* position: absolute;
-    right: 0; */
     background-color: #FA7436;
     color: #FFFFFF;
     box-shadow: none;
 }
 
 .navlink:hover {
-    text-decoration: none;
     color: #FA7436;
 }
 
@@ -67,18 +69,103 @@
 
 .Hero-btncontain {
     display: flex;
-    /* align-items: end; */
     justify-content: space-between;
 }
 
-/* Base styles remain unchanged */
-
 .navbar-toggle {
     display: none;
-    font-size: 30px;
+    font-size: 2rem;
+   
     cursor: pointer;
 }
 
 .navitems.open {
     display: flex !important;
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        width: 90%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navitems {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start;
+        width: 100%;
+    }
+
+    .Hero-btncontain {
+        align-items: flex-start;
+        width: 100%;
+        padding-right: 0.5rem;
+
+    }
+
+    .navbar-toggle {
+        position: absolute;
+        top: 0.7rem;
+        right: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .navbar-main {
+        padding: 0 1rem;
+        justify-content: start;
+    }
+
+    .list ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: start;
+        gap: 1rem;
+        align-items: start;
+        padding: 0;
+        margin-left: 0.8rem;
+    }
+
+    .list {
+        display: none;
+    }
+
+    .Hero-btncontain {
+        display: none;
+    }
+
+    .list.open {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        text-align: left;
+    }
+
+    .Hero-btncontain.open {
+        display: flex;
+        justify-content: left;
+       
+    }
+
+    .navitems li {
+        margin-top: 0;
+    }
+
+    .btn-logo .btn {
+        padding-left: 0;
+    }
+
+    .invisible-nav {
+        top: -4rem;
+    }
+
+    .invisible-nav.open {
+        top: -18.8rem;
+        transition: 0.8s;
+    }
 }

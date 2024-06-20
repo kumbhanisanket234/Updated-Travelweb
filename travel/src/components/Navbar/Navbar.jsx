@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import profileimg from '../Images/img10.webp';
@@ -16,10 +17,13 @@ function Navbar() {
     const [visible, setVisible] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    }
     const scrollToComponent = (id) => {
         const element = document.getElementById(id);
         if (element) {
-            const offsetTop = element.offsetTop; // Calculate the offsetTop of the element
+            const offsetTop = element.offsetTop; 
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth',
@@ -77,15 +81,14 @@ function Navbar() {
         dispatch(clearUser());
     }
 
-
     return (
-        <div className="navbar-main" style={{ zIndex: '1001', top: visible ? '0' : '-114px', transition: 'top 0.5s' }}>
-            <div className="navbar">
+        <div className={`navbar-main ${visible ? "visible-nav" : "invisible-nav"} ${menuOpen ? "open" : ""}`} style={{ zIndex: '1001' }}>
+            <div className={`navbar `}>
                 <div className="btn-logo">
                     <button className="btn btn-default logo navlink" onClick={() => { scrollToComponent('hero') }}>Trabook</button>
                 </div>
 
-                <div className="list">
+                <div className={`list ${menuOpen ? "open" : ""}`}>
                     <ul className="navitems">
                         <li className="navlink" onClick={() => { scrollToComponent('hero') }}>Home</li>
                         <li className="navlink" onClick={() => { scrollToComponent('about') }}>About</li>
@@ -94,14 +97,13 @@ function Navbar() {
                         <li className="navlink" onClick={() => { scrollToComponent('blogs') }}>Blog</li>
                     </ul>
                 </div>
-                <div className="Hero-btncontain">
+                <div className={`Hero-btncontain ${menuOpen ? "open" : ""}`}>
                     {
                         Object.keys(userData).length > 0 ? (
                             <>
                                 <button className="btn btn-default signup"><NavLink activeClassName="menu_active" className="signup-hover" aria-current="page" to="/" onClick={handleLogout}>Logout</NavLink></button>
                                 <button className="btn btn-default login"><div className="navlink text-dark" style={{ fontWeight: 'bold' }}>{displayName}</div></button>
                                 <img src={userData.image ? userData.image : profileimg} alt="Profile pic" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
-
                             </>
                         )
                             :
@@ -112,6 +114,9 @@ function Navbar() {
                     }
                 </div>
             </div >
+            <div className="navbar-toggle" onClick={toggleMenu}>
+                &#9776;
+            </div>
         </div >
 
     )

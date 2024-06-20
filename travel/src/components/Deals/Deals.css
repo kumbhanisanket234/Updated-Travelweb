@@ -1,186 +1,131 @@
 .Deals {
-    height: 960px;
     background-color: #FEFCFB;
+    padding: 1.25rem;
+}
+
+.Deals .container{
+    margin-top: 8rem;
+}
+
+.Deal-heading h1 {
+    font-family: 'Volkhov';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.375rem;
+    color: #222222;
+}
+
+.Deal-detail p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    color: #666666;
+}
+
+.Deal-boxes{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.Deals .Deal-content {
-    width: 1170px;
-    height: 720px;
-    /* border: 1px solid black; */
-}
-
-.Deal-headcontain {
-    display: flex;
-    justify-content: center;
-}
-
-.Deal-content .Deal-heading {
+.Deal-box {
+    background-color: #FFFFFF;
+    box-shadow: 0.875rem 1.5rem 4.5rem rgba(102, 102, 102, 0.1);
+    border-radius: 0.5rem;
+   
     text-align: center;
 }
 
-.Deal-heading h1 {
-
-    font-family: 'Volkhov';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 54px;
-
-    color: #222222;
-
-
-}
-
-.Deal-details p {
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 32px;
-    margin-left: 5px;
-    color: #666666;
-
-}
-
-.Deal-heading {
-    display: flex;
-    justify-content: center;
-}
-
-.Deal-boxes {
-    margin-top: 3.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 29px;
-}
-
-.Deal-box {
-    width: 270px;
-    height: 426px;
-    background-color: #FFFFFF;
-    /* padding: 65px;    */
-    /* Rectangle 4332 */
-
-    background: #FFFFFF;
-    box-shadow: 14px 24px 72px rgba(102, 102, 102, 0.1);
-    border-radius: 8px;
-}
-
 .Deal-box #location-img {
-    height: 290px;
-    width: 270px;
-    border-radius: 10px;
-}
-
-.Deal-box img {
+    height: 18.125rem;
+    width: 100%;
+    border-radius: 0.625rem;
     object-fit: cover;
 }
 
 .Deal-box .Deal-topics {
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
-    line-height: 26px;
-
-    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.625rem;
     color: #222222;
 }
 
-.Deal-details img {
-    margin-top: 5px;
-    height: 20px;
-    width: 15px;
+.Deal-details i {
+    margin-top: 0.2rem;
+    color: #666666;
 }
 
 .Deal-carddetail {
-    padding: 0 10px;
+    padding: 0 0.625rem;
 }
 
 .Deal-City {
-    width: 238px;
-    height: 26px;
+    padding: 0px 5px 0px 5px;
     display: flex;
-    /* background-color: #666666;    */
-    margin-top: 2.5rem;
     justify-content: space-between;
+    margin-top: 1.5625rem;
 }
 
 .Deal-City img {
-    width: 15px;
-    height: 15px;
-    margin-top: 2.5px;
-    margin-right: 5px;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    margin-top: 0.15625rem;
+    margin-right: 0.3125rem;
 }
 
-.detail-container {
-    display: flex;
-    width: 238px;
-    height: 28px;
-    /* background-color: #666666; */
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.Deal-detail p {
+    height: 4rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    color: #666666;
 }
 
 .price p {
     color: #666666;
-
     font-weight: 500;
 }
 
-.Deals .prenext-btn {
-    margin-top: 5.5rem;
-    gap: 24px;
-    /* margin-bottom: 1rem; */
+.Deals .detail-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price p.discounted {
+    color: #FA7436;
+    background-color: #FFE7DB;
+    border-radius: 7px;
+    padding: 0px 10px;
+    font-weight: 700;
 }
 
-.btn-next {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #FA7436;
-    border: 2px solid black;
-    /* border: 2px solid #FFFFFF; */
-    margin-left: -2px;
+.prenext-btn {
+    margin-top: 3.4375rem;
+    gap: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
+.btn-next,
 .btn-previous {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
+    border: 0.125rem solid black;
     background-color: #FFFFFF;
-    border: 2px solid black;
-    
 }
 
-#btn-next,
+#btn-next {
+    background-color: #FA7436;
+}
+
 #btn-previous {
-    box-shadow: none;
-
-}
-
-.Deal-detail p {
-    width: 433px;
-    height: 64px;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 32px;
-
-    text-align: center;
-
-    /* Paragraph */
-    color: #666666;
-
-
+    background-color: #FFFFFF;
 }

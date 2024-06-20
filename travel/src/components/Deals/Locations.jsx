@@ -131,6 +131,6 @@ export const Locations = [
         cutoutprice: "899",
         price: "799",
         img: "https://images.unsplash.com/photo-1591742708307-ce49d19450d4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    }
+    },
 
 ]
