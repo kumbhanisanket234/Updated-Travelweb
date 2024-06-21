@@ -40,7 +40,7 @@
     justify-content: center;
     gap: 2rem;
     padding-left: 0;
-   
+
 }
 
 .navitems li {
@@ -72,10 +72,14 @@
     justify-content: space-between;
 }
 
+.Hero-btncontain .signup{
+    margin-bottom: 0.2rem;
+}
+
 .navbar-toggle {
     display: none;
     font-size: 2rem;
-   
+
     cursor: pointer;
 }
 
@@ -83,6 +87,11 @@
     display: flex !important;
 }
 
+@media (max-width: 834px) {
+    .list ul {
+        gap: 1rem;
+    }
+}
 
 @media (max-width: 768px) {
     .navbar {
@@ -90,6 +99,10 @@
         width: 90%;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .list ul {
+        gap: 1rem;
     }
 
     .navitems {
@@ -149,7 +162,7 @@
     .Hero-btncontain.open {
         display: flex;
         justify-content: left;
-       
+
     }
 
     .navitems li {
@@ -165,7 +178,7 @@
     }
 
     .invisible-nav.open {
-        top: -18.8rem;
+        top: -19rem;
         transition: 0.8s;
     }
 }
