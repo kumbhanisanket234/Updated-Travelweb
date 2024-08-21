@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
     firstName: String,
@@ -14,21 +14,13 @@ const UserSchema = new mongoose.Schema({
     googleId: String,
     facebookId: String,
     githubId: String,
-    linkedinId: String,
-    microsoftId: String,
     fullName: String,
     image: String,
     googleEmail: String,
     facebookEmail: String,
-    linkedinEmail: String,
-    microsoftEmail: String,
-    verified:{
-        type:Boolean,
-        default:false
-    }
+    favoriteProducts: []
+}, { timestamps: true });
 
-}, { timestamps: true })
-
-const UserModel = mongoose.model("Users", UserSchema)
+const UserModel = mongoose.model("Users", UserSchema);
 
 module.exports = UserModel;

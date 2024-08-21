@@ -1,4 +1,3 @@
-
 .Plans {
     background-color: #FEFCFB;
     padding: 1.25rem;
@@ -6,6 +5,7 @@
 
 .Plans .container {
     margin-top: 8rem;
+    align-items: unset;
 }
 
 .Plans-heading h1 {
@@ -30,15 +30,27 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
+    
+}
+
+.Plans-card{
+    width: 95%;
 }
 
 .Plans-box {
     background-color: #FFFFFF;
-    box-shadow: 0.875rem 1.5rem 4.5rem rgba(102, 102, 102, 0.1);
+    /* box-shadow: 0.875rem 1.5rem 4.5rem rgba(102, 102, 102, 0.1); */
     border-radius: 1rem;
     margin-top: 1rem;
     text-align: center;
     gap: 10px;
+}
+
+.Plans-box #location-img {
+    height: 19rem;
+    width: 100%;
+    border-radius: 0.625rem;
+    object-fit: cover;
 }
 
 #city-image {
@@ -58,7 +70,7 @@
 }
 
 .Plans-carddetail {
-    padding:0.5rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .Plans-details img,
@@ -80,7 +92,7 @@
 
 .prenext-btn {
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .btn-next,

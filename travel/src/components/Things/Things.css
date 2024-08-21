@@ -24,10 +24,6 @@
       flex-wrap: wrap;
   }
 
-  .heading {
-      max-width: 30rem;
-  }
-
   .heading h1 {
       font-family: 'Volkhov';
       font-style: normal;

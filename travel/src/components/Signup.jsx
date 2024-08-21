@@ -114,11 +114,9 @@ function Signup() {
                 else {
                     axios.post('http://localhost:3001/verifyOTP', { userId: email, otp: otpValue })
                         .then(response => {
-                            console.log(response)
                             if (response.data.status === "SUCCESS") {
                                 axios.post('http://localhost:3001/register', { firstName, lastName, email, phone, password, confirmPassword })
                                     .then((response) => {
-                                        console.log(response);
                                         navigate('/login')
                                     })
                                     .catch((error) => {
@@ -161,7 +159,7 @@ function Signup() {
         <div className="container mt-3">
             <div className="signup-form">
                 <div className="fields-container">
-                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i class="fa-solid fa-arrow-left"></i></button>
+                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>
                     <h1 className="text-center">Sign Up</h1>
                     <div className='form'>
                         <div className='d-flex gap-2'>
@@ -214,16 +212,6 @@ function Signup() {
                             <Button variant="contained" className="github-btn" onClick={handleLoginWithGithub}>
                                 <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
                                     <i className="fab fa-github"></i> Continue with GitHub
-                                </div>
-                            </Button>
-                            <Button variant="contained" className="microsoft-btn" onClick={handleLoginWithMicrosoft}>
-                                <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
-                                    <i className="fab fa-microsoft"></i> Continue with Microsoft
-                                </div>
-                            </Button>
-                            <Button variant="contained" className="linkedin-btn" onClick={handleLoginWithLinkedIn}>
-                                <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
-                                    <i className="fab fa-linkedin"></i> Continue with LinkedIn
                                 </div>
                             </Button>
                         </div>

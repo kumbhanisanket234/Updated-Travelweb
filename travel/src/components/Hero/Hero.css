@@ -102,6 +102,7 @@
 .discover-btn:hover {
     background-color: #FA7436;
     color: white;
+    cursor: pointer;
 }
 
 #btn-explore,

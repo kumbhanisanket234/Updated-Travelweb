@@ -13,7 +13,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const userData = useSelector((state) => state.user);
+    // const userData = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     function validateEmail(email) {
@@ -62,14 +62,6 @@ function Login() {
         window.open("http://localhost:3001/auth/github", "_self");
     }
 
-    const handleLoginWithLinkedIn = () => {
-        window.open("http://localhost:3001/auth/linkedin", "_self");
-    }
-
-    const handleLoginWithMicrosoft = () => {
-        window.open("http://localhost:3001/auth/microsoft", "_self");
-    }
-
     const hadleLoginWithFacebook = () => {
         window.open("http://localhost:3001/auth/facebook", "_self");
     }
@@ -77,7 +69,7 @@ function Login() {
         <>
             <div className="container mt-5">
                 <div className="signup-form">
-                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i class="fa-solid fa-arrow-left"></i></button> 
+                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button> 
                     <div className="fields-container">
                         <h1 className="text-center">Login</h1>
                         <form className='form' onSubmit={handleSubmit}>
@@ -118,16 +110,6 @@ function Login() {
                             <Button variant="contained" className="github-btn" onClick={handleLoginWithGithub}>
                                 <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
                                     <i className="fab fa-github"></i> Continue with GitHub
-                                </div>
-                            </Button>
-                            <Button variant="contained" className="microsoft-btn" onClick={handleLoginWithMicrosoft}>
-                                <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
-                                    <i className="fab fa-microsoft"></i> Continue with Microsoft
-                                </div>
-                            </Button>
-                            <Button variant="contained" className="linkedin-btn" onClick={handleLoginWithLinkedIn}>
-                                <div className='d-flex align-items-center justify-content-between' style={{ width: '300px' }}>
-                                    <i className="fab fa-linkedin"></i> Continue with LinkedIn
                                 </div>
                             </Button>
                         </div>

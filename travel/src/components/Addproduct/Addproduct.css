@@ -1,0 +1,27 @@
+#title,
+#img-url,
+#price,
+#rating {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    padding: 0px 10px;
+}
+
+.addproduct-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    justify-content: space-between;
+    padding: 0px 4px;
+}
+
+.addproduct-container input {
+    width: 320px;
+    height: 43px;   
+}
+
+.addproduct-container:hover{
+    border: 1px solid black;
+}

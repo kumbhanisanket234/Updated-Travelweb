@@ -2,8 +2,12 @@ import React from 'react';
 import './Hero.css';
 import img3 from '../Images/img3.png';
 import headimg from '../Images/Head_img.png';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 function Hero() {
+
+    const navigate =useNavigate();
     return (
         <div className='Hero' id='hero'>
             <div className="container containerhome">
@@ -16,7 +20,7 @@ function Hero() {
                             <p>A Team of experienced tourism professionals will provide you with the best advice and tips for your desired place.</p>
                         </div>
                         <div className="btndiscover">
-                            <button className="btn btn-primary discover-btn" id='btn-discover'>Discover Now</button>
+                            <button className="btn btn-primary discover-btn" id='btn-discover' onClick={()=>{navigate('/discover')}}>Discover Now</button>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-12 main-img">

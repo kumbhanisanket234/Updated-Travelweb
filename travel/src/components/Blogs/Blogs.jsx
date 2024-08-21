@@ -3,12 +3,14 @@ import './Blogs.css';
 import { Blogscontain } from './Blogscontain';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Blogs() {
-  const [currentPage, setCurrentPage] = useState(0); 
+  const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const carouselRef = useRef(null);
   const dotLength = [];
+  const navigate=useNavigate();
 
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
@@ -36,7 +38,6 @@ function Blogs() {
   };
 
   const handleSlideChange = (currentSlide) => {
-    console.log(currentSlide)
     setCurrentPage(Math.ceil(currentSlide / itemsPerPage));
   };
 
@@ -44,6 +45,9 @@ function Blogs() {
     dotLength.push(i);
   }
 
+  const handleBlog=(item)=>{
+    localStorage.setItem('blogtitle',item.title)
+  }
   return (
     <div className='Blogs' id='blogs'>
       <div className="Blog-containall">
@@ -62,16 +66,16 @@ function Blogs() {
           >
             {Blogscontain.map((items, index) => (
               <div className="Blogs-card1 m-auto" key={index}>
-                <img src={items.img} alt="" />
-                <p className='Blogs-desc'>{items.caption}</p>
-                <p className='Blogs-date'>{items.date}</p>
+                <div><Link style={{display: "table-cell"}} to="/blog" target="_blank"><img src={items.img} alt="" onClick={()=>handleBlog(items)}/></Link></div>
+                <p className='Blogs-desc'>{items.title}</p>
+                <p className='Blogs-date'>{items.date}</p>  
               </div>
             ))}
           </Carousel>
         </div>
 
         <div className="Blogs-ellipse-container">
-          {dotLength.map((_, index) => (
+          {dotLength.map((index) => (
             <div
               key={index}
               className={`Blogs-ellipse1 ${currentPage === index ? 'active' : ''}`}

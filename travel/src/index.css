@@ -11,3 +11,48 @@ a {
 p {
   margin-bottom: 0;
 }
+
+.wrapper {
+  margin: 0 auto;
+  text-align: center;
+  .gallery-container {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 2rem 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.wrapper .gallery-container ul {
+
+  &.mosaic-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+
+    li {
+      background-position: center center;
+      background-size: cover;
+      flex: auto;
+      height: 15vw;
+      margin: 0 0.5rem 1rem 0rem;
+      max-height: 10rem;
+
+      img {
+        height: 100%;
+        opacity: 0;
+      }
+    }
+  }
+}

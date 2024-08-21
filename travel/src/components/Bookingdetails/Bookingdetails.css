@@ -1,0 +1,146 @@
+.bookingdetails-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+    background-color: #413c3c;
+}
+
+.booking-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial, sans-serif';
+    border: 2px solid #FA7436;
+}
+
+.booking-details h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.package-info h2 {
+    font-size: 1.8em;
+    color: #2c3e50;
+}
+
+.package-info p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.facilities h3 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #2c3e50;
+}
+
+.facilities ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.facilities li {
+    font-size: 1.1em;
+    color: #555;
+    background-color: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btndiscover .btn {
+    box-sizing: border-box;
+    border-radius: 0.3125rem;
+    background-color: white;
+    color: #FA7436;
+    border: 0.0625rem solid #FA7436;
+}
+
+.btndiscover .btn:hover {
+    background-color: #FA7436;
+    color: white;
+}
+
+.flatpickr-calendar {
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+  .flatpickr-months {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .flatpickr-prev-month, .flatpickr-next-month {
+    border: none;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .flatpickr-prev-month:hover, .flatpickr-next-month:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+  }
+  .flatpickr-day.today, .flatpickr-day.selected {
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+  }
+  .flatpickr-day:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+  }
+  .flatpickr-weekdays, .flatpickr-days {
+    text-align: center;
+  }
+  .flatpickr-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  .flatpickr-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .flatpickr-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #e6e6e6;
+  }
+  .flatpickr-button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .flatpickr-cancel {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  .flatpickr-apply {
+    background-color: #000;
+    color: #fff;
+  }
+  
+@media (max-width: 1239px) {
+    .plane2,.plane1{
+        display: none;
+    }
+
+    .booking{
+        justify-content: center;
+    }
+}

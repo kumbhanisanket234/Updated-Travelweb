@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser } from '../store';
 import './Navbar.css'
+import { Badge } from 'antd';
+import { useCartContext } from "../cartcontext";
 
 function Navbar() {
 
@@ -16,6 +18,7 @@ function Navbar() {
     const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
     const [visible, setVisible] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cart] = useCartContext();
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -23,7 +26,7 @@ function Navbar() {
     const scrollToComponent = (id) => {
         const element = document.getElementById(id);
         if (element) {
-            const offsetTop = element.offsetTop; 
+            const offsetTop = element.offsetTop;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth',
@@ -51,11 +54,11 @@ function Navbar() {
         try {
             const res = await axios.get("http://localhost:3001/login/success", { withCredentials: true });
             // setUserData(res.data.user);
-            console.log("response", res);
             dispatch(setUser(res.data.user));
 
             if (res.data.user.fullName) {
                 setDisplayName(res.data.user.fullName);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
             }
         }
         catch (err) {
@@ -65,11 +68,11 @@ function Navbar() {
 
     useEffect(() => {
         let loginUserData = localStorage.getItem('user');
+
         if (loginUserData) {
             dispatch(setUser(JSON.parse(loginUserData)));
             setDisplayName(JSON.parse(loginUserData).fullName);
         }
-
         getuser();
     }, [loginUserData]);
 
@@ -95,13 +98,18 @@ function Navbar() {
                         <li className="navlink" onClick={() => { scrollToComponent('deals') }}>Destination</li>
                         <li className="navlink" onClick={() => { scrollToComponent('plans') }}>Tour</li>
                         <li className="navlink" onClick={() => { scrollToComponent('blogs') }}>Blog</li>
+                        <li className="navlink">
+                            <Badge count={cart.length} showZero>
+                                <NavLink className="navlink" to="/cart">Favourite</NavLink>
+                            </Badge>
+                        </li>
                     </ul>
                 </div>
                 <div className={`Hero-btncontain ${menuOpen ? "open" : ""}`}>
                     {
                         Object.keys(userData).length > 0 ? (
                             <>
-                                <button className="btn btn-default signup"><NavLink activeClassName="menu_active" className="signup-hover" aria-current="page" to="/" onClick={handleLogout}>Logout</NavLink></button>
+                                <button className="btn btn-default signup"><NavLink className="menu_active signup-hover" aria-current="page" to="/" onClick={handleLogout} >Logout</NavLink></button>
                                 <button className="btn btn-default login"><div className="navlink text-dark" style={{ fontWeight: 'bold' }}>{displayName}</div></button>
                                 <img src={userData.image ? userData.image : profileimg} alt="Profile pic" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
                             </>

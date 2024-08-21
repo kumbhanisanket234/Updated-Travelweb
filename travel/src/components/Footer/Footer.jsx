@@ -6,25 +6,8 @@ import img31 from '../Images/img31.png';
 
 function Footer() {
   return (
-    <div className='Footer' id='footer'>
+   <div className='Footer' id='footer'>
       <div className="container">
-        <div className="Footer-subscribe">
-          <div className="Footer-subscribe_inrdiv">
-            <h1>Subscribe and get exclusive deals & offer</h1>
-            <div className="Footer-inputdata">
-              <form className='form-group d-flex w-100'>
-                <input
-                  type="text"
-                  className='form-control'
-                  id='Footer-input'
-                  placeholder='Enter Your Mail'
-                  required
-                />
-                <button className="btn btn-default">Subscribe</button>
-              </form>
-            </div>
-          </div>
-        </div>
 
         <div className="Footer-downdiv">
           <div className="Footer-containdetails w-100">

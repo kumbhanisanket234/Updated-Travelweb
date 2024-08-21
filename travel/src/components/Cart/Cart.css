@@ -1,0 +1,11 @@
+.cart-heading{
+    text-align: center;
+    color: #FA7436;
+    font-weight: 500;
+    font-size: 4rem;
+    opacity: 0.7;
+}
+
+.cart-container{
+    margin-top: 2rem!important;
+}

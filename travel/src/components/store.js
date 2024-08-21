@@ -28,6 +28,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 user: {},
             };
+
         default:
             return state;
     }
@@ -36,3 +37,4 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 
 export default store;
+

@@ -6,6 +6,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo');
+const ProductModel = require('./Models/Products');
+const PlansModel = require('./Models/Plans');
+const ReviewsModel = require('./Models/Reviews');
+const BookingdetailsModel = require('./Models/Bookingdetails');
 
 const session = require("express-session")
 const passport = require("passport");
@@ -14,25 +18,19 @@ require('dotenv').config();
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
-const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 const clientIdGoogle = process.env.GOOGLE_CLIENT_ID;
 const clientIdGithub = process.env.GITHUB_CLIENT_ID;
-const clientIdLinkedin = process.env.LINKEDIN_CLIENT_ID;
 const clientIdFacebook = process.env.FACEBOOK_CLIENT_ID;
-const clientIdMicrosoft = process.env.MICROSOFT_CLIENT_ID;
 
 const clientSecretGoogle = process.env.GOOGLE_CLIENT_SECRET;
 const clientSecretGithub = process.env.GITHUB_CLIENT_SECRET;
-const clientSecretLinkedin = process.env.LINKEDIN_CLIENT_SECRET;
 const clientSecretFacebook = process.env.FACEBOOK_CLIENT_SECRET;
-const clientSecretMicrosoft = process.env.MICROSOFT_CLIENT_SECRET;
+
 
 const UserOtpVerification = require("./Models/OtpVerification");
-const router = express.Router();
 
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 
 const app = express()
 
@@ -100,7 +98,6 @@ let transporter = nodemailer.createTransport({
 app.post('/sendOTP', async (req, res) => {
     try {
         const { email } = req.body;
-
         const otp = `${Math.floor(1000 + Math.random() * 9000)}`
 
         const existingUser = await UserModel.findOne({ email })
@@ -115,7 +112,7 @@ app.post('/sendOTP', async (req, res) => {
             html: `<p>Enter <b>${otp}</b> in the app to verify your email</p>
                   <p>This code <b>expire in 1 Minute</b>.</p>`
         }
-        
+
         const saltRounds = 10;
         const hashOtp = await bcrypt.hash(otp, saltRounds);
         const newOtpVerification = new UserOtpVerification({
@@ -142,6 +139,7 @@ app.post('/sendOTP', async (req, res) => {
                 message: "User Already Exist With This Email!",
             })
         } else {
+            console.log(err)
             res.json({
                 status: "FAILED",
                 message: 'Failed to send Otp',
@@ -174,8 +172,9 @@ app.post('/register', async (req, res) => {
             phone,
             password: hashPassword,
             confirmPassword: hashPassword,
-            verified: false
         })
+
+        await user.save();
 
         const token = jwt.sign(
             { id: user._id, email },
@@ -226,7 +225,7 @@ app.post('/verifyOTP', async (req, res) => {
                         throw new Error("Invalid OTP entered")
                     }
                     else {
-                        await UserModel.updateOne({ _id: _id }, { verified: true })
+                        await UserModel.updateOne({ _id: _id })
                         await UserOtpVerification.deleteMany({ userId });
 
                         res.json({
@@ -297,7 +296,7 @@ app.post('/login', async (req, res) => {
                 token,
                 user
             })
-            isManual = true;
+
         }
         else {
             res.status(400).send("Invalid Credentials");
@@ -374,7 +373,6 @@ app.post('/reset-password/:id/:token', (req, res) => {
 })
 
 app.get("/login/success", verifyToken, async (req, res) => {
-
     if (req.user) {
         res.status(200).json({ message: "user login", user: req.user })
     }
@@ -424,13 +422,14 @@ passport.use(
                         googleEmail: profile.emails[0].value,
                         image: profile.photos[0].value
                     })
+                    console.log(user)
 
                     const token = jwt.sign(
-                        { id: profile.id, googleEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
+                        { id: user._id, googleEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
                         'shhhh', //jwtSecret
-                        {
-                            expiresIn: '1d'
-                        }
+                        // {
+                        //     expiresIn: '1d'
+                        // }
                     )
 
                     user.token = token
@@ -438,8 +437,6 @@ passport.use(
                     await user.save()
                     return cb(null, user)
                 }
-
-
             }
             catch (err) {
                 console.error('Error saving user:', err);
@@ -470,11 +467,11 @@ passport.use(new FacebookStrategy({
                 })
 
                 const token = jwt.sign(
-                    { id: profile.id, facebookEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
+                    { id: user._id, facebookEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
                     'shhhh', //jwtSecret
-                    {
-                        expiresIn: '1d'
-                    }
+                    // {
+                    //     expiresIn: '1d'
+                    // }
                 )
 
                 user.token = token
@@ -508,11 +505,11 @@ passport.use(new GitHubStrategy({
                     image: profile.photos[0].value
                 })
                 const token = jwt.sign(
-                    { id: profile.id, fullName: profile.username, image: profile.photos[0].value },
+                    { id: user._id, fullName: profile.username, image: profile.photos[0].value },
                     'shhhh', //jwtSecret
-                    {
-                        expiresIn: '1d'
-                    }
+                    // {
+                    //     expiresIn: '1d'
+                    // }
                 )
 
                 user.token = token
@@ -526,96 +523,6 @@ passport.use(new GitHubStrategy({
         }
     }
 ));
-
-//Microsoft Strategy
-passport.use(new OIDCStrategy({
-    identityMetadata: 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration',
-    clientID: clientIdMicrosoft,
-    clientSecret: clientSecretMicrosoft,
-    responseType: 'code id_token',
-    responseMode: 'form_post',
-    redirectUrl: 'http://localhost:3001/auth/microsoft/callback',
-    allowHttpForRedirectUrl: true,
-    clientSecret: clientSecretMicrosoft,
-    validateIssuer: false,
-    passReqToCallback: false,
-    scope: ['profile', 'offline_access', 'email']
-},
-    async (iss, sub, profile, accessToken, refreshToken, done) => {
-        console.log("profile", profile);
-        try {
-            let user = await UserModel.findOne({ microsoftId: profile.oid });
-            if (user) {
-                return done(null, user);
-            } else {
-                user = new UserModel({
-                    microsoftId: profile.oid,
-                    fullName: profile.displayName,
-                    microsoftEmail: profile._json.preferred_username,
-                    image: profile._json.picture
-                });
-
-                const token = jwt.sign(
-                    { id: profile.id, microsoftEmail: profile._json.preferred_username, fullName: profile.displayName, image: profile._json.picture },
-                    'shhhh', //jwtSecret
-                    {
-                        expiresIn: '1d'
-                    }
-                )
-
-                user.token = token
-
-                await user.save();
-                return done(null, user);
-            }
-        } catch (err) {
-            console.error('Error saving user:', err);
-            return done(err, null);
-        }
-    }
-));
-
-// LinkedIn Strategy
-passport.use(new LinkedInStrategy({
-    clientID: clientIdLinkedin,
-    clientSecret: clientSecretLinkedin,
-    callbackURL: "/auth/linkedin/callback",
-    scope: ['r_liteprofile', 'r_emailaddress']
-},
-    async (accessToken, refreshToken, profile, cb) => {
-        console.log(profile);
-        try {
-            let user = await UserModel.findOne({ linkedinId: profile.id })
-            if (user) {
-                return cb(null, user)
-            } else {
-                user = new UserModel({
-                    linkedinId: profile.id,
-                    fullName: profile.displayName,
-                    linkedinEmail: profile.emails[0].value,
-                    image: profile.photos[0].value
-                })
-
-                const token = jwt.sign(
-                    { id: profile.id, linkedinEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
-                    'shhhh', //jwtSecret
-                    {
-                        expiresIn: '1d'
-                    }
-                )
-
-                user.token = token
-
-                await user.save()
-                return cb(null, user)
-            }
-        } catch (err) {
-            console.error('Error saving user:', err);
-            return cb(err, null)
-        }
-    }
-));
-
 
 // Google Routes
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }))
@@ -638,21 +545,186 @@ app.get('/auth/github/callback', passport.authenticate('github', {
     failureRedirect: 'http://localhost:5173/login'
 }));
 
-// Microsoft Routes
-app.get('/auth/microsoft', passport.authenticate('azuread-openidconnect', { failureRedirect: 'http://localhost:5173/login' }));
-app.post('/auth/microsoft/callback',
-    passport.authenticate('azuread-openidconnect', { failureRedirect: 'http://localhost:5173/login' }),
-    (req, res) => {
-        res.redirect('http://localhost:5173');
-    }
-);
 
-// LinkedIn Routes
-app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
-app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: 'http://localhost:5173',
-    failureRedirect: 'http://localhost:5173/login'
-}));
+// Add Products Deals
+app.post('/products/adddeals', async (req, res) => {
+    const productsDetail = req.body;
+    try {
+        const product = await ProductModel.create(productsDetail);
+        res.status(201).send(product);
+    } catch (err) {
+        console.error('Error in adding product --->', err);
+        res.status(500).send(err.message);
+    }
+});
+
+// Get Product Deals
+app.get('/products/getdeals', async (req, res) => {
+    try {
+        const products = await ProductModel.find();
+        if (products.length === 0) {
+            return res.status(404).send({ message: "No products found" });
+        }
+        res.status(200).send(products);
+    } catch (err) {
+        console.error("Error retrieving products:", err);
+        res.status(500).send({ message: "Error retrieving products", error: err });
+    }
+});
+
+//Add Plans
+app.post('/plans/addplans', async (req, res) => {
+    const plansDetail = req.body;
+    try {
+        const plans = await PlansModel.create(plansDetail);
+        res.status(201).send(plans);
+    } catch (err) {
+        console.error('Error in adding product --->', err);
+        res.status(500).send(err.message);
+    }
+});
+
+//Get Plans
+app.get('/plans/getplans', async (req, res) => {
+    try {
+        const plans = await PlansModel.find();
+        if (plans.length === 0) {
+            return res.status(404).send({ message: "No products found" });
+        }
+        res.status(200).send(plans);
+    } catch (err) {
+        console.error("Error retrieving products:", err);
+        res.status(500).send({ message: "Error retrieving products", error: err });
+    }
+});
+
+//Add Reviews
+app.post('/reviews/addreviews', async (req, res) => {
+    const reviewsDetail = req.body;
+    try {
+        const reviews = await ReviewsModel.create(reviewsDetail);
+        res.status(201).send(reviews);
+    } catch (err) {
+        console.error('Error in adding product --->', err);
+        res.status(500).send(err.message);
+    }
+});
+
+//Get Reviews
+app.get('/reviews/getreviews', async (req, res) => {
+    try {
+        const reviews = await ReviewsModel.find();
+        if (reviews.length === 0) {
+            return res.status(404).send({ message: "No products found" });
+        }
+        res.status(200).send(reviews);
+    } catch (err) {
+        console.error("Error retrieving products:", err);
+        res.status(500).send({ message: "Error retrieving products", error: err });
+    }
+});
+
+//Add Boookingdetails
+app.post('/Boookingdetails/addBoookingdetails', async (req, res) => {
+    const BookingDetail = req.body;
+    try {
+        const facilities = await BookingdetailsModel.create(BookingDetail);
+        res.status(201).send(facilities);
+    } catch (err) {
+        console.error('Error in adding product --->', err);
+        res.status(500).send(err.message);
+    }
+});
+
+//Get Boookingdetails
+app.get('/Boookingdetails/getBoookingdetails', async (req, res) => {
+    try {
+        const BookingDetail = await BookingdetailsModel.find();
+        if (BookingDetail.length === 0) {
+            return res.status(404).send({ message: "No products found" });
+        }
+        res.status(200).send(BookingDetail);
+    } catch (err) {
+        console.error("Error retrieving products:", err);
+        res.status(500).send({ message: "Error retrieving products", error: err });
+    }
+});
+
+// Add to favorites
+app.post('/favorites/add', async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const { productId } = req.body;
+        const { item } = req.body;
+
+        if (!productId) {
+            return res.status(400).send("Product ID is required");
+        }
+
+        const user = await UserModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        if (user.favoriteProducts.includes(productId)) {
+            return res.status(400).send("Product already in favorites");
+        }
+
+        user.favoriteProducts.push(item);
+        await user.save();
+
+        res.status(200).send(user);
+    } catch (err) {
+        console.error("Error adding to favorites:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+//get favorite product
+app.get('/favorites/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+
+        const user = await UserModel.findById(userId).select('favoriteProducts');
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        res.status(200).json(user.favoriteProducts);
+    } catch (err) {
+        console.error("Error fetching favorites:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// Remove from favorites
+app.post('/favorites/remove', async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const { productId } = req.body;
+
+        if (!productId) {
+            return res.status(400).send("Product ID is required");
+        }
+
+        const user = await UserModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        user.favoriteProducts = user.favoriteProducts.filter(item => item._id !== productId);
+        await user.save();
+
+        res.status(200).send("Product removed from favorites");
+
+    } catch (err) {
+        console.error("Error removing from favorites:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 app.listen(3001, () => {
     console.log("Server is running")

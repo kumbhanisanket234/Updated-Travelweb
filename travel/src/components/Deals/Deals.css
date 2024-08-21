@@ -3,8 +3,9 @@
     padding: 1.25rem;
 }
 
-.Deals .container{
+.Deals .container {
     margin-top: 8rem;
+    align-items: unset;
 }
 
 .Deal-heading h1 {
@@ -25,17 +26,21 @@
     color: #666666;
 }
 
-.Deal-boxes{
+.Deal-boxes {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.Deal-card{
+    width: 95%;
+}
 .Deal-box {
+    margin-top: 10px;
     background-color: #FFFFFF;
-    box-shadow: 0.875rem 1.5rem 4.5rem rgba(102, 102, 102, 0.1);
+    /* box-shadow: 0.875rem 1.5rem 4.5rem rgba(102, 102, 102, 0.1); */
     border-radius: 0.5rem;
-   
+
     text-align: center;
 }
 
@@ -53,6 +58,7 @@
     font-size: 1.5rem;
     line-height: 1.625rem;
     color: #222222;
+    text-align: left;
 }
 
 .Deal-details i {
@@ -93,11 +99,12 @@
     font-weight: 500;
 }
 
-.Deals .detail-container{
+.Deals .detail-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .price p.discounted {
     color: #FA7436;
     background-color: #FFE7DB;
@@ -128,4 +135,28 @@
 
 #btn-previous {
     background-color: #FFFFFF;
+}
+
+.image-container {
+    position: relative;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.image-container i:hover {
+    background-color: #FA7436;
+    color: white;
+}
+
+.image-container:hover{
+    cursor: pointer;
 }
