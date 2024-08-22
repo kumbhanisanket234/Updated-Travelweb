@@ -21,6 +21,9 @@ import Bookingdetails from './components/Bookingdetails/Bookingdetails';
 import Addplans from './components/Addplans/Addplans';
 import Discover from './components/Discover';
 import Blog from './components/Blogs/Blog';
+import PrivacyPolicy from './components/Privacypolicy';
+import Termsandconditions from './components/Termsandconditions';
+import Helpfaq from './components/Helpfaq';
 
 function Home() {
     return (
@@ -49,6 +52,9 @@ function Home() {
                 <Route path='/bookingdetails' Component={Bookingdetails}></Route>
                 <Route path='/discover' Component={Discover}></Route>
                 <Route path='/blog' Component={Blog}></Route>
+                <Route path='/privacy' Component={PrivacyPolicy}></Route>
+                <Route path='/terms' Component={Termsandconditions}></Route>
+                <Route path='/helps' Component={Helpfaq}></Route>
                 <Route path='*' Component={Error}></Route>
             </Routes>
 

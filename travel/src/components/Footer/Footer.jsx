@@ -3,12 +3,22 @@ import './Footer.css';
 import img29 from '../Images/img29.png';
 import img30 from '../Images/img30.png';
 import img31 from '../Images/img31.png';
+import { Link } from 'react-router-dom';
 
 function Footer() {
+  const scrollToComponent = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
   return (
-   <div className='Footer' id='footer'>
+    <div className='Footer' id='footer'>
       <div className="container">
-
         <div className="Footer-downdiv">
           <div className="Footer-containdetails w-100">
             <div className="Footer-details row">
@@ -26,34 +36,34 @@ function Footer() {
                 <div className="Footer-list1">
                   <ul>
                     <li id='Footer-listheading'>Company</li>
-                    <li>About</li>
-                    <li>Careers</li>
-                    <li>Logistic</li>
-                    <li>Privacy & Policy</li>
+                    <li className='navlink' onClick={() => { scrollToComponent('about') }}>About</li>
+                    {/* <li>Careers</li> */}
+                    {/* <li>Logistic</li> */}
+                    <a href='/privacy'><li className='navlink'>Privacy & Policy</li></a>
                   </ul>
                 </div>
                 <div className="Footer-list1">
                   <ul>
                     <li id='Footer-listheading'>Contact</li>
-                    <li>Help/FAQ</li>
-                    <li>Press</li>
-                    <li>Affiliates</li>
+                    <a href='/helps'><li className='navlink'>Help/FAQ</li></a>
+                    {/* <li>Press</li> */}
+                    {/* <li>Affiliates</li> */}
                   </ul>
                 </div>
                 <div className="Footer-list1">
                   <ul>
                     <li id='Footer-listheading'>More</li>
-                    <li>Press Centre</li>
-                    <li>Our Blog</li>
-                    <li>Low fare tips</li>
+                    {/* <li>Press Centre</li> */}
+                    <li className="navlink" onClick={() => { scrollToComponent('Blog-containall') }}>Our Blogs</li>
+                    {/* <li>Low fare tips</li> */}
                   </ul>
                 </div>
               </div>
             </div>
 
             <div className="Footer-endpart row w-100">
-              <p className="col-md-6 text-center text-md-start">Copyright, Trabook 2022. All rights reserved.</p>
-              <p className="col-md-6 text-center text-md-end">Terms & Conditions</p>
+              <p className="col-md-6 text-center text-md-start">Copyright, Trabook 2024. All rights reserved.</p>
+              <p className="col-md-6 text-center text-md-end "> <a href="/terms" className='navlink'>Terms & Conditions</a></p>
             </div>
           </div>
         </div>

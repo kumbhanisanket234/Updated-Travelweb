@@ -4,8 +4,11 @@
     justify-content: center;
 }
 
+.Blog-containall{
+    padding-top: 8rem;
+}
+
 .Blogs-heading {
-    margin-top: 8rem;
     display: flex;
     justify-content: center;
 }
@@ -132,9 +135,7 @@
 
 
 @media(max-width:320px) {
-    .Blogs-heading {
-        margin-top: 16rem;
-    }
+    
     .Blogs-heading h1 {
         font-size: 40px;
     }

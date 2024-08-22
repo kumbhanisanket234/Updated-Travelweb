@@ -50,7 +50,7 @@ function Blogs() {
   }
   return (
     <div className='Blogs' id='blogs'>
-      <div className="Blog-containall">
+      <div className="Blog-containall" id='Blog-containall'>
         <div className="Blogs-heading">
           <h1>Get update with <span style={{ color: '#FA7436' }}>latest blog</span></h1>
         </div>
