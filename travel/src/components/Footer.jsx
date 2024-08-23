@@ -1,9 +1,7 @@
 import React from 'react';
-import './Footer.css';
-import img29 from '../Images/img29.png';
-import img30 from '../Images/img30.png';
-import img31 from '../Images/img31.png';
-import { Link } from 'react-router-dom';
+import img29 from './Images/img29.png';
+import img30 from './Images/img30.png';
+import img31 from './Images/img31.png';
 
 function Footer() {
   const scrollToComponent = (id) => {
@@ -18,7 +16,7 @@ function Footer() {
   };
   return (
     <div className='Footer' id='footer'>
-      <div className="container">
+      <div className="container fcc">
         <div className="Footer-downdiv">
           <div className="Footer-containdetails w-100">
             <div className="Footer-details row">

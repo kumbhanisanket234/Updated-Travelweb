@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import './Addproduct.css'
 import axios from 'axios';
 function Addproduct() {
 
@@ -11,6 +10,7 @@ function Addproduct() {
     const [cutoutPrice, setCutoutPrice] = useState(0);
     const [price, setPrice] = useState(0);
     const [rating, setRating] = useState(0);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ function Addproduct() {
             });
     }
     return (
-        <div className="container mt-5">
+        <div className="container fcc mt-5">
             <div className="signup-form">
                 <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>
                 <div className="fields-container">

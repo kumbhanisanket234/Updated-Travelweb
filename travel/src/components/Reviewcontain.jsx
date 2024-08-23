@@ -1,4 +1,4 @@
-import img24 from '../Images/img24.png'
+import img24 from './Images/img24.png'
 
 export const Reviews = [
     {

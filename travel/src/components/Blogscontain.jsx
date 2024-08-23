@@ -1,8 +1,7 @@
-import img25 from '../Images/img25.png'
-import img26 from '../Images/img26.png'
-import img27 from '../Images/img27.png'
-import img28 from '../Images/img28.png'
-import './Blogs.css';
+import img25 from './Images/img25.png'
+import img26 from './Images/img26.png'
+import img27 from './Images/img27.png'
+import img28 from './Images/img28.png'
 
 export const Blogscontain = [
     {

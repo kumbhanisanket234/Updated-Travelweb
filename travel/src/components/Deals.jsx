@@ -1,22 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Plans.css';
-import img15 from '../Images/img15.png';
-import img19 from '../Images/img19.png';
-import img23 from '../Images/img23.png';
-import Pagination, { usePagination } from '../Pagination';
+import React, { useEffect, useState, useRef } from 'react';
+import img15 from './Images/img15.png';
+import Pagination, { usePagination } from './Pagination';
 import toast, { Toaster } from "react-hot-toast"
-import { useCartContext } from '../cartcontext';
-import Carousel from 'react-multi-carousel';
+import { useCartContext } from '../context/cartcontext';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { useNavigate } from 'react-router-dom';
 
-function Plansdetails() {
-  const [plansContain, setPlansContain] = useState([]);
+function Dealsdetails() {
+  const [cardContain, setCardContain] = useState([]);
   const [active, setActive] = useState(false);
-  const navigate=useNavigate();
-
   const [cart, setCart] = useCartContext();
+
+  const navigate = useNavigate();
+
   let loginUserData = localStorage.getItem('user');
   let userId;
   if (loginUserData) {
@@ -34,9 +32,9 @@ function Plansdetails() {
       .then((data) => setCart(data))
       .catch((err) => console.log(err));
 
-    fetch('http://localhost:3001/plans/getplans', { withCredentials: true })
+    fetch('http://localhost:3001/products/getdeals')
       .then(response => response.json())
-      .then(data => setPlansContain(data))
+      .then(data => setCardContain(data))
       .catch(err => console.log(err));
 
   }, [userId])
@@ -71,6 +69,11 @@ function Plansdetails() {
       .catch((err) => {
         console.log('✌️err --->', err);
       });
+  }
+
+  const handleDealsBooking = (item) => {
+    localStorage.setItem('destination',item.city);
+    navigate('/bookingdetails')
   }
 
   const [itemsPerPage, setItemsPerPage] = useState(1);
@@ -110,31 +113,24 @@ function Plansdetails() {
     }
   };
 
-  const handlePlansBooking = (item) => {
-    localStorage.setItem('destination',item.location);
-    navigate('/bookingdetails')
-  }
 
   return (
-    <div className='Plans' id='plans'>
-      <div className="container">
-        <div className="Plans-content">
-          <div className="Plans-headcontain row align-items-center text-center">
-            <div className="col-md-8">
-              <div className="Plans-heading">
-                <h1>Best <span style={{ color: '#FA7436' }}>vacation plan</span></h1>
+    <div className='Deals' id='deals'>
+      <div className="container fcc">
+        <div className="Deal-content">
+          <div className="Deal-headcontain row text-center">
+            <div className="col">
+              <div className="Deal-heading">
+                <h1>Exclusive <span style={{ color: '#FA7436' }}>deals & discounts</span></h1>
               </div>
-              <div className="Plans-detail">
-                <p>Plan your perfect vacation with our travel agency. Choose among hundreds of all-inclusive offers!</p>
+              <div className="Deal-detail">
+                <p>Discover our fantastic early booking discounts & start planning your journey.</p>
               </div>
-            </div>
-            <div className="col-md-4">
-              <img src={img19} alt="img" className="img-fluid" />
             </div>
           </div>
-          <div className="row Plans-boxes">
-            <Toaster />
 
+          <div className="row fcc gy-4">
+          {/* <Toaster /> */}
             <Carousel
               responsive={responsive}
               keyBoardControl={true}
@@ -145,57 +141,58 @@ function Plansdetails() {
               slidesToSlide={itemsPerPage}
               ref={carouselRef}
             >
-              {
-                plansContain.map((item, index) => (
-                  <div className="Plans-card" key={index}>
-                    <div className="Plans-box">
-                      <div className="image-container">
-                        <img id='location-img' src={item.imgURL} alt="" onClick={()=>handlePlansBooking(item)}/>
-                        <i className="fa-regular fa-heart heart-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
-                      </div>
-                      <div className="Plans-carddetail">
-                        <div className='Plans-City d-flex justify-content-between'>
-                          <p className='Plans-topics'>{item.location}</p>
-                          <div className='Plans-amt'>
-                            <p>${item.price}k</p>
-                          </div>
+              {cardContain.map((item, index) => (
+                <div className="Deal-card" key={index}>
+                  <div className="Deal-box">
+                    <div className="image-container">
+                      <img id='location-img' src={item.imgURL} alt="" onClick={() => handleDealsBooking(item)} />
+                      <i className="fa-regular fa-heart heart-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
+
+                    </div>
+                    <div className="Deal-carddetail">
+                      <div className='Deal-City'>
+                        <p className='Deal-topics'>{item.city}</p>
+                        <div className='d-flex'>
+                          <img src={img15} alt="" />
+                          <p>{item.rating}</p>
                         </div>
-                        <div className="detail-container mt-1 d-flex justify-content-between">
-                          <div className='Plans-details gap-1 d-flex'>
-                            <img src={img23} alt="" />
-                            <p>{item.duration} Days Trip</p>
-                          </div>
-                          <div className="Plans-price gap-1 d-flex">
-                            <img src={img15} alt="" />
-                            <p>{item.rating}</p>
-                          </div>
+                      </div>
+                      <div className="detail-container py-2">
+                        <div className='Deal-details d-flex gap-1'>
+                          <i className="fa-solid fa-location-dot"></i>
+                          <p>{item.country}</p>
+                        </div>
+                        <div className="price d-flex gap-2">
+                          <p style={{ textDecoration: 'line-through' }}>${item.cutoutPrice}</p>
+                          <p className="discounted">${item.price}</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
+              )
+              )}
             </Carousel>
 
           </div>
 
-          <div className="prenext-btn justify-content-center d-flex">
-            <button className="btn-previous btn btn-default" id='btn-previous' onClick={handlePrev} style={active ? { backgroundColor: "#FA7436" } : null}><i className="fa-solid fa-arrow-left"></i></button>
+          <div className="prenext-btn">
+            <button className="btn-previous btn btn-default" id='btn-previous' onClick={handlePrev} style={active ? { backgroundColor: "#FA7436" } : { backgroundColor: "white" }}><i className="fa-solid fa-arrow-left"></i></button>
             <button className="btn-next btn btn-default" id='btn-next' onClick={handleNext} style={!active ? { backgroundColor: "#FA7436" } : { backgroundColor: "white" }}><i className="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
-function Plans() {
-  const [pageLimit] = useState(3);
-
+function Deals() {
+  const [pageLimit] = useState(4);
   return (
     <Pagination pageLimit={pageLimit}>
-      <Plansdetails />
+      <Dealsdetails />
     </Pagination>
   );
 }
 
-export default Plans;
+export default Deals;

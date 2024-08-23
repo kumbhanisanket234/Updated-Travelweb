@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './About.css';
-// import { Reviews } from './Reviewcontain';
-import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast"
 
 function About() {
@@ -98,8 +95,8 @@ function About() {
   }
 
   return (
-    <div className='About' id='about'>
-      <div className="container About-containAll">
+    <div className='About fcc' id='about'>
+      <div className="container fcc About-containAll">
         <div className="row align-items-center">
           <div className="col-lg-6 col-md-12 About-heading">
             <h1>What people say <br /><span style={{ color: '#FA7436' }}>about Us.</span></h1>

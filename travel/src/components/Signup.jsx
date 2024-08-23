@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import './Signup.css';
+
 import axios from 'axios';
 
 function Signup() {
@@ -156,7 +156,7 @@ function Signup() {
     }
 
     return (
-        <div className="container mt-3">
+        <div className="container fcc mt-3">
             <div className="signup-form">
                 <div className="fields-container">
                     <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>

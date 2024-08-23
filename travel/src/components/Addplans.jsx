@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import '../Addproduct/Addproduct.css'
 import axios from 'axios';
 function Addplans() {
 
     const [location, setLocation] = useState("");
-    const [duration,setDuration]=useState(0)
+    const [duration, setDuration] = useState(0)
     const [imgURL, setImgURL] = useState("");
 
     const [price, setPrice] = useState(0);
     const [rating, setRating] = useState(0);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/plans/addplans', { location, imgURL, price, duration,rating })
+        axios.post('http://localhost:3001/plans/addplans', { location, imgURL, price, duration, rating })
             .then((res) => {
                 setLocation('')
                 setImgURL('')
@@ -27,13 +27,12 @@ function Addplans() {
             });
     }
     return (
-        <div className="container mt-5">
+        <div className="container fcc mt-5">
             <div className="signup-form">
                 <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>
                 <div className="fields-container">
                     <h1 className="text-center">Add Plans</h1>
                     <form className='form' onSubmit={handleSubmit}>
-
                         location
                         <div className='addproduct-container'>
                             <input type="text" id='title' value={location} onChange={(e) => { setLocation(e.target.value) }} />

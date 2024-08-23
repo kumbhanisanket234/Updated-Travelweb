@@ -1,12 +1,11 @@
 import React from 'react';
-import './Things.css';
-import img4 from '../Images/img4.png';
-import img5 from '../Images/img5.png';
-import img6 from '../Images/img6.png';
-import img7 from '../Images/img7.png';
-import img8 from '../Images/img8.png';
-import img9 from '../Images/img9.png';
-import img10 from '../Images/img10.png';
+import img4 from './Images/img4.png';
+import img5 from './Images/img5.png';
+import img6 from './Images/img6.png';
+import img7 from './Images/img7.png';
+import img8 from './Images/img8.png';
+import img9 from './Images/img9.png';
+import img10 from './Images/img10.png';
 
 function Things() {
 
@@ -23,8 +22,8 @@ function Things() {
   };
 
   return (
-    <div className='Things' id='things'>
-      <div className="container">
+    <div className='Things fcc' id='things'>
+      <div className="container fcc">
         <div className="content-all">
           <div className="row text-md-end">
             <div className="col-md-9 head-text-contain">

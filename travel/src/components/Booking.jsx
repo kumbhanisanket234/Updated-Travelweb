@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Booking.css';
-import img1 from '../Images/booking.png'
-import img2 from '../Images/plane.png'
-import img3 from '../Images/package.png'
+import img1 from './Images/booking.png'
+import img2 from './Images/plane.png'
+import img3 from './Images/package.png'
 
 const TravelForm = () => {
     const destination = localStorage.getItem('destination');

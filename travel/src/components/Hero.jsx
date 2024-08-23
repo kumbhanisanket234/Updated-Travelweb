@@ -1,7 +1,6 @@
 import React from 'react';
-import './Hero.css';
-import img3 from '../Images/img3.png';
-import headimg from '../Images/Head_img.png';
+import img3 from './Images/img3.png';
+import headimg from './Images/Head_img.png';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -10,7 +9,7 @@ function Hero() {
     const navigate =useNavigate();
     return (
         <div className='Hero' id='hero'>
-            <div className="container containerhome">
+            <div className="container fcc containerhome">
                 <div className="row">
                     <div className="col-lg-6 col-md-12 home">
                         <div className="text">

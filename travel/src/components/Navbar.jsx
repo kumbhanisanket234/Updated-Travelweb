@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import profileimg from '../Images/img10.webp';
+import profileimg from './Images/img10.webp';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, clearUser } from '../store';
-import './Navbar.css'
+import { setUser, clearUser } from './store';
 import { Badge } from 'antd';
-import { useCartContext } from "../cartcontext";
+import { useCartContext } from "../context/cartcontext";
 
 function Navbar() {
 
@@ -85,7 +84,7 @@ function Navbar() {
     }
 
     return (
-        <div className={`navbar-main ${visible ? "visible-nav" : "invisible-nav"} ${menuOpen ? "open" : ""}`} style={{ zIndex: '1001' }}>
+        <div className={`navbar-main fcc ${visible ? "visible-nav" : "invisible-nav"} ${menuOpen ? "open" : ""}`} style={{ zIndex: '1001' }}>
             <div className={`navbar `}>
                 <div className="btn-logo">
                     <button className="btn btn-default logo navlink" onClick={() => { scrollToComponent('hero') }}>Trabook</button>
@@ -100,7 +99,7 @@ function Navbar() {
                         <li className="navlink" onClick={() => { scrollToComponent('blogs') }}>Blog</li>
                         <li className="navlink">
                             <Badge count={cart.length} showZero>
-                                <NavLink className="navlink" to="/cart">Favourite</NavLink>
+                                <a className="navlink" href="/cart">Favourite</a>
                             </Badge>
                         </li>
                     </ul>
@@ -121,11 +120,11 @@ function Navbar() {
                             </>
                     }
                 </div>
-            </div >
+            </div>
             <div className="navbar-toggle" onClick={toggleMenu}>
                 &#9776;
             </div>
-        </div >
+        </div>
 
     )
 }

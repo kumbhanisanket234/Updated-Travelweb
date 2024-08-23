@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Bookingdetails.css'
 import { useNavigate } from 'react-router-dom';
-import { useCartContext } from '../cartcontext';
 
 const Bookingdetails = () => {
   const navigate = useNavigate();
@@ -29,7 +27,7 @@ const Bookingdetails = () => {
   }, [])
 
   return (
-    <div className="bookingdetails-container">
+    <div className="bookingdetails-container fcc">
       <div className="booking-details">
         <h1>Booking Details</h1>
         <div className="package-info">

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './Cart.css'
-import img15 from '../Images/img15.png';
-import { useCartContext } from '../cartcontext'
+import img15 from './Images/img15.png';
+import { useCartContext } from '../context/cartcontext';
 import toast, { Toaster } from 'react-hot-toast'
-import img23 from '../Images/img23.png'
+import img23 from './Images/img23.png'
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -58,7 +57,7 @@ function Cart() {
                 <div className="Deal-content">
                     {cart.length > 0 ? (
                         <>
-                            <div className="row Deal-boxes gy-4 mt-2">
+                            <div className="row fcc gy-4 mt-2">
                                 {cart.map((item, index) => (
                                     <div className="col-lg-3 col-md-6 col-sm-12" key={index} >
                                         <div className="Deal-box">

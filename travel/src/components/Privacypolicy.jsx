@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
 
             <section>
                 <h4>6. Your Rights</h4>
-                <p>You have the right to access, correct, or delete your personal information. You may also object to or restrict certain types of data processing. If you wish to exercise any of these rights, please contact us at [Your Contact Information].</p>
+                <p>You have the right to access, correct, or delete your personal information. You may also object to or restrict certain types of data processing. If you wish to exercise any of these rights, please contact us on support@trabook.com.</p>
             </section>
 
             <section>
@@ -42,7 +42,7 @@ const PrivacyPolicy = () => {
 
             <section>
                 <h4>8. Contact Us</h4>
-                <p>If you have any questions or concerns about this Privacy Policy, please contact us at [Your Contact Information].</p>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us on support@trabook.com.</p>
             </section>
         </div>
     );

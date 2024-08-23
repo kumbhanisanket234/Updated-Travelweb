@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-import './Signup.css'
 import { useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import axios from 'axios';
@@ -42,7 +41,7 @@ function Resetpassword() {
     };
 
     return (
-        <div className="container">
+        <div className="container fcc">
             <div className="signup-form m-0">
                 <div className="fields-container">
                     <h3 className="text-center">Reset Password</h3>

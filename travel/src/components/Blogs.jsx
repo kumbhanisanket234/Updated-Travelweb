@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './Blogs.css';
 import { Blogscontain } from './Blogscontain';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
