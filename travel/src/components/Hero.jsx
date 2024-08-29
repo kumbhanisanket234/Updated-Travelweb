@@ -9,7 +9,7 @@ function Hero() {
     const navigate =useNavigate();
     return (
         <div className='Hero' id='hero'>
-            <div className="container fcc containerhome">
+            <div className="container dja containerhome">
                 <div className="row">
                     <div className="col-lg-6 col-md-12 home">
                         <div className="text">
@@ -28,8 +28,8 @@ function Hero() {
                 </div>
             </div>
             <div className="navbar-main2">
-                <div className="inr">
-                    <div className="content">
+                <div className="inr dja">
+                    <div className="content dja">
                         <div className='d-flex gap-4'>
                             <div className="location">
                                 <div className="afterpic">

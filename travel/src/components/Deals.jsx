@@ -102,34 +102,34 @@ function Dealsdetails() {
   const handlePrev = () => {
     if (carouselRef.current) {
       carouselRef.current.previous();
-      setActive(false);
+      setActive(true);
     }
   };
 
   const handleNext = () => {
     if (carouselRef.current) {
       carouselRef.current.next();
-      setActive(true);
+      setActive(false);
     }
   };
 
 
   return (
     <div className='Deals' id='deals'>
-      <div className="container fcc">
+      <div className="container dja">
         <div className="Deal-content">
           <div className="Deal-headcontain row text-center">
-            <div className="col">
-              <div className="Deal-heading">
+            <div className="dja head-text-contain">
+              <div className="heading">
                 <h1>Exclusive <span style={{ color: '#FA7436' }}>deals & discounts</span></h1>
               </div>
-              <div className="Deal-detail">
+              <div className="detail">
                 <p>Discover our fantastic early booking discounts & start planning your journey.</p>
               </div>
             </div>
           </div>
 
-          <div className="row fcc gy-4">
+          <div className="row dja gy-4 mt-3">
           {/* <Toaster /> */}
             <Carousel
               responsive={responsive}
@@ -146,7 +146,7 @@ function Dealsdetails() {
                   <div className="Deal-box">
                     <div className="image-container">
                       <img id='location-img' src={item.imgURL} alt="" onClick={() => handleDealsBooking(item)} />
-                      <i className="fa-regular fa-heart heart-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
+                      <i className="fa-regular fa-heart like-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
 
                     </div>
                     <div className="Deal-carddetail">
@@ -158,7 +158,7 @@ function Dealsdetails() {
                         </div>
                       </div>
                       <div className="detail-container py-2">
-                        <div className='Deal-details d-flex gap-1'>
+                        <div className='details d-flex gap-1'>
                           <i className="fa-solid fa-location-dot"></i>
                           <p>{item.country}</p>
                         </div>

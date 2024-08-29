@@ -27,7 +27,7 @@ const Bookingdetails = () => {
   }, [])
 
   return (
-    <div className="bookingdetails-container fcc">
+    <div className="bookingdetails-container dja">
       <div className="booking-details">
         <h1>Booking Details</h1>
         <div className="package-info">

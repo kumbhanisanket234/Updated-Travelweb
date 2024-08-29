@@ -98,14 +98,14 @@ function Plansdetails() {
   const handlePrev = () => {
     if (carouselRef.current) {
       carouselRef.current.previous();
-      setActive(false);
+      setActive(true);
     }
   };
 
   const handleNext = () => {
     if (carouselRef.current) {
       carouselRef.current.next();
-      setActive(true);
+      setActive(false);
     }
   };
 
@@ -116,14 +116,14 @@ function Plansdetails() {
 
   return (
     <div className='Plans' id='plans'>
-      <div className="container fcc">
+      <div className="container dja">
         <div className="Plans-content">
           <div className="Plans-headcontain row align-items-center text-center">
-            <div className="col-md-8">
-              <div className="Plans-heading">
+            <div className="col-md-8 dja head-text-contain align-items-end">
+              <div className="heading">
                 <h1>Best <span style={{ color: '#FA7436' }}>vacation plan</span></h1>
               </div>
-              <div className="Plans-detail">
+              <div className="detail">
                 <p>Plan your perfect vacation with our travel agency. Choose among hundreds of all-inclusive offers!</p>
               </div>
             </div>
@@ -150,7 +150,7 @@ function Plansdetails() {
                     <div className="Plans-box">
                       <div className="image-container">
                         <img id='location-img' src={item.imgURL} alt="" onClick={()=>handlePlansBooking(item)}/>
-                        <i className="fa-regular fa-heart heart-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
+                        <i className="fa-regular fa-heart like-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
                       </div>
                       <div className="Plans-carddetail">
                         <div className='Plans-City d-flex justify-content-between'>

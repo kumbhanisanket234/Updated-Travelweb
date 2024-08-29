@@ -27,7 +27,7 @@ function Addplans() {
             });
     }
     return (
-        <div className="container fcc mt-5">
+        <div className="container dja mt-5">
             <div className="signup-form">
                 <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>
                 <div className="fields-container">

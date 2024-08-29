@@ -57,13 +57,13 @@ function Cart() {
                 <div className="Deal-content">
                     {cart.length > 0 ? (
                         <>
-                            <div className="row fcc gy-4 mt-2">
+                            <div className="row dja gy-4 mt-2">
                                 {cart.map((item, index) => (
                                     <div className="col-lg-3 col-md-6 col-sm-12" key={index} >
                                         <div className="Deal-box">
                                             <div className="image-container">
                                                 <img id='location-img' src={item.imgURL ? item.imgURL : item.img} alt="" onClick={() => handleDealsBooking(item)} />
-                                                <i className="fa-regular fa-heart heart-icon" title='Remove From Favourite' style={{ backgroundColor: '#FA7436', color: 'white' }} onClick={() => handleLikeBtn(item, (index))}></i>
+                                                <i className="fa-regular fa-heart like-icon" title='Remove From Favourite' style={{ backgroundColor: '#FA7436', color: 'white' }} onClick={() => handleLikeBtn(item, (index))}></i>
                                                 <Toaster />
                                             </div>
                                             <div className="Deal-carddetail">
@@ -75,7 +75,7 @@ function Cart() {
                                                     </div>
                                                 </div>
                                                 <div className="detail-container py-2">
-                                                    <div className='Deal-details d-flex gap-1'>
+                                                    <div className='details d-flex gap-1'>
                                                         {
                                                             item.country ? <i className="fa-solid fa-location-dot"></i>
                                                                 :

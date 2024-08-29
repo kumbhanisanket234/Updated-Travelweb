@@ -53,7 +53,7 @@ function Navbar() {
         try {
             const res = await axios.get("http://localhost:3001/login/success", { withCredentials: true });
             // setUserData(res.data.user);
-            dispatch(setUser(res.data.user));
+            dispatch(setUser(res.data.user));   
 
             if (res.data.user.fullName) {
                 setDisplayName(res.data.user.fullName);
@@ -84,14 +84,14 @@ function Navbar() {
     }
 
     return (
-        <div className={`navbar-main fcc ${visible ? "visible-nav" : "invisible-nav"} ${menuOpen ? "open" : ""}`} style={{ zIndex: '1001' }}>
+        <div className={`navbar-main dja ${visible ? "visible-nav" : "invisible-nav"} ${menuOpen ? "open" : ""}`} style={{ zIndex: '1001' }}>
             <div className={`navbar `}>
                 <div className="btn-logo">
                     <button className="btn btn-default logo navlink" onClick={() => { scrollToComponent('hero') }}>Trabook</button>
                 </div>
 
                 <div className={`list ${menuOpen ? "open" : ""}`}>
-                    <ul className="navitems">
+                    <ul className="navitems dja">
                         <li className="navlink" onClick={() => { scrollToComponent('hero') }}>Home</li>
                         <li className="navlink" onClick={() => { scrollToComponent('about') }}>About</li>
                         <li className="navlink" onClick={() => { scrollToComponent('deals') }}>Destination</li>

@@ -22,11 +22,11 @@ function Things() {
   };
 
   return (
-    <div className='Things fcc' id='things'>
-      <div className="container fcc">
+    <div className='Things dja' id='things'>
+      <div className="container dja">
         <div className="content-all">
           <div className="row text-md-end">
-            <div className="col-md-9 head-text-contain">
+            <div className="col-md-9 head-text-contain dja">
               <div className="heading">
                 <h1>Things you need <span style={{ color: '#FA7436' }}>to do</span> </h1>
               </div>

@@ -67,7 +67,7 @@ function Login() {
     }
     return (
         <>
-            <div className="container fcc mt-5">
+            <div className="container dja mt-5">
                 <div className="signup-form">
                     <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button> 
                     <div className="fields-container">
@@ -75,7 +75,7 @@ function Login() {
                         <form className='form' onSubmit={handleSubmit}>
 
                             <div className='email-password-container'>
-                                <input type="email" id='login-email' placeholder="Email" style={{ width: '320px', height: '43px' }} onChange={(e) => { setEmail(e.target.value) }} />
+                                <input type="email" id='login-email' placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
                             </div>
                             <div className='email-password-container'>
                                 <input

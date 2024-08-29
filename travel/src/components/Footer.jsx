@@ -16,7 +16,7 @@ function Footer() {
   };
   return (
     <div className='Footer' id='footer'>
-      <div className="container fcc">
+      <div className="container dja">
         <div className="Footer-downdiv">
           <div className="Footer-containdetails w-100">
             <div className="Footer-details row">

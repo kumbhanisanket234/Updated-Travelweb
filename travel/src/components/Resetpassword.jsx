@@ -41,7 +41,7 @@ function Resetpassword() {
     };
 
     return (
-        <div className="container fcc">
+        <div className="container dja">
             <div className="signup-form m-0">
                 <div className="fields-container">
                     <h3 className="text-center">Reset Password</h3>

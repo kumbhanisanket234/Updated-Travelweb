@@ -95,8 +95,8 @@ function About() {
   }
 
   return (
-    <div className='About fcc' id='about'>
-      <div className="container fcc About-containAll">
+    <div className='About dja' id='about'>
+      <div className="container dja About-containAll">
         <div className="row align-items-center">
           <div className="col-lg-6 col-md-12 About-heading">
             <h1>What people say <br /><span style={{ color: '#FA7436' }}>about Us.</span></h1>
@@ -146,8 +146,8 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="btndiscover">
-          <button className="btn btn-primary discover-btn" id='btn-discover' onClick={() => { setShowModal(true) }}>Add Review</button>
+        <div className="btndiscover dja mt-5">
+          <button className="btn btn-primary discover-btn " id='btn-discover' onClick={() => { setShowModal(true) }}>Add Review</button>
         </div>
         {
           showModal && (

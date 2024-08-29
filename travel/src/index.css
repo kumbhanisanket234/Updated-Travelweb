@@ -12,7 +12,7 @@ p {
   margin-bottom: 0;
 }
 
-.fcc {
+.dja {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@ p {
 
 .navbar-main {
   width: 100%;
-  z-index: 1000;
+  z-index: 3;
   position: fixed;
   transition: 0.5s;
   background-color: white;
@@ -52,12 +52,8 @@ p {
 
 .list ul {
   list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 2rem;
   padding-left: 0;
-
 }
 
 .navitems li {
@@ -96,7 +92,6 @@ p {
 .navbar-toggle {
   display: none;
   font-size: 2rem;
-
   cursor: pointer;
 }
 
@@ -144,7 +139,6 @@ p {
     align-items: flex-start;
     width: 100%;
     padding-right: 0.5rem;
-
   }
 
   .navbar-toggle {
@@ -154,7 +148,6 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
   }
 
   .navbar-main {
@@ -172,11 +165,8 @@ p {
     margin-left: 0.8rem;
   }
 
+  .Hero-btncontain,
   .list {
-    display: none;
-  }
-
-  .Hero-btncontain {
     display: none;
   }
 
@@ -211,15 +201,6 @@ p {
   }
 }
 
-
-body {
-  background-color: #FEFCFB;
-
-  font-family: 'Roboto', sans-serif;
-}
-
- 
-
 .signup-form {
   background: white;
   padding: 20px 40px;
@@ -246,7 +227,6 @@ body {
 .text-center {
   text-align: center;
   color: #333;
-
 }
 
 .fields-container .form {
@@ -256,44 +236,16 @@ body {
   margin-top: 1.2rem;
 }
 
-.d-flex {
-  display: flex;
-}
-
-.gap-2 {
-  gap: 20px;
-}
-
 .signup-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
-
-.signup-btn .primary-btn {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #FA7436;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.signup-btn .primary-btn:hover {
-  background-color: #303f9f;
-}
-
-
 
 .social-signup {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 .google-btn {
@@ -323,15 +275,6 @@ body {
   background-color: #24292e !important;
 }
 
-.microsoft-btn {
-  background-color: #2b579a !important;
-  color: white;
-}
-
-.microsoft-btn:hover {
-  background-color: #1a4e8a !important;
-}
-
 #first-name,
 #last-name,
 #email,
@@ -339,16 +282,6 @@ body {
 #phone,
 #confirm-password {
   height: 10px;
-}
-
-.linkedin-btn {
-  background-color: #0077B5;
-  color: white;
-  text-transform: none;
-}
-
-.linkedin-btn:hover {
-  background-color: #005983;
 }
 
 .email-password-container {
@@ -369,7 +302,7 @@ body {
 }
 
 .email-password-container input {
-  width: 310px;
+  margin: 0;
   height: 43px;
 }
 
@@ -441,21 +374,14 @@ body {
   max-width: 52.5625rem;
   box-shadow: 0rem 0.125rem 5rem 0.125rem rgba(0, 0, 0, 0.06);
   border-radius: 0.625rem;
-  justify-content: center;
-  display: flex;
-  align-items: center;
   padding: 2rem;
   margin-top: 2rem;
 }
 
 .content {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 1.25rem;
-
 }
 
 .content .btn {
@@ -524,7 +450,6 @@ body {
 }
 
 .wrapper .gallery-container ul {
-
   &.mosaic-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -557,8 +482,6 @@ body {
 }
 
 .head-text-contain {
-  align-items: end;
-  display: flex;
   flex-direction: column;
 }
 
@@ -571,7 +494,6 @@ body {
   text-align: center;
 }
 
-
 .detail {
   max-width: 28rem;
 }
@@ -580,10 +502,9 @@ body {
   margin-top: 0.3125rem;
   width: 100%;
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 400;
   font-size: 1.125rem;
-  line-height: 2rem;
+  line-height: 1.625rem;
   color: #666666;
   text-align: center;
 }
@@ -598,7 +519,6 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
 }
 
 .box {
@@ -621,9 +541,8 @@ body {
 
 .box .details {
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.625rem;
   color: #666666;
 }
@@ -638,24 +557,6 @@ body {
   align-items: unset;
 }
 
-.Deal-heading h1 {
-  font-family: 'Volkhov';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 3.375rem;
-  color: #222222;
-}
-
-.Deal-detail p {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  color: #666666;
-}
-
 .Deal-card {
   width: 95%;
 }
@@ -664,7 +565,6 @@ body {
   margin-top: 10px;
   background-color: #FFFFFF;
   border-radius: 0.5rem;
-
   text-align: center;
 }
 
@@ -708,16 +608,6 @@ body {
   margin-right: 0.3125rem;
 }
 
-.Deal-detail p {
-  height: 4rem;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  color: #666666;
-}
-
 .price p {
   color: #666666;
   font-weight: 500;
@@ -753,19 +643,16 @@ body {
   background-color: #FFFFFF;
 }
 
-#btn-next {
-  background-color: #FA7436;
-}
-
+#btn-next,
 #btn-previous {
-  background-color: #FFFFFF;
+  box-shadow: none;
 }
 
 .image-container {
   position: relative;
 }
 
-.heart-icon {
+.like-icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -795,29 +682,10 @@ body {
   align-items: unset;
 }
 
-.Plans-heading h1 {
-  font-family: 'Volkhov';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 3.375rem;
-  color: #222222;
-}
-
-.Plans-detail p {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  color: #666666;
-}
-
 .Plans-boxes {
   margin-top: 1rem;
   display: flex;
   justify-content: space-around;
-
 }
 
 .Plans-card {
@@ -826,7 +694,6 @@ body {
 
 .Plans-box {
   background-color: #FFFFFF;
-
   border-radius: 1rem;
   margin-top: 1rem;
   text-align: center;
@@ -877,28 +744,6 @@ body {
   text-align: right;
 }
 
-.prenext-btn {
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.btn-next,
-.btn-previous {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 0.125rem solid black;
-  background-color: #FFFFFF;
-}
-
-#btn-next {
-  background-color: #FA7436;
-}
-
-#btn-previous {
-  background-color: #FFFFFF;
-}
-
 .About {
   height: 100vh;
   background-color: #F7F8FC;
@@ -909,7 +754,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: normal;
-
 }
 
 .About-heading {
@@ -923,7 +767,6 @@ body {
   font-size: 48px;
   line-height: 54px;
   color: #222222;
-
 }
 
 .About-heading p {
@@ -942,14 +785,8 @@ body {
   margin-top: 1rem;
 }
 
-#btn-next,
-#btn-previous {
-  box-shadow: none;
-}
-
 .About-client1 {
-  width: 100%;
-
+  width: 100%;  
 }
 
 .About-client1 img {
@@ -982,12 +819,12 @@ body {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 25px;
   color: #444444;
 }
 
-.About-review .username {
+.username {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
@@ -997,17 +834,13 @@ body {
   margin-top: 3px;
 }
 
-.About-review .userlocation {
-  font-family: 'Poppins';
-  font-style: normal;
+.About-review .userlocation,.About-client2 .userdetail {
   font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
   color: #666666;
 }
 
 .About-client2 {
-  box-sizing: border-box;
   border: 2px solid rgba(102, 102, 102, 0.08);
   border-radius: 10px;
   padding: 20px;
@@ -1017,33 +850,8 @@ body {
   margin-top: -15px;
 }
 
-.About-client2 .username {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 27px;
-  color: #222222;
-}
-
-.About-client2 .userdetail {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  color: #666666;
-}
-
-.About-containAll .btndiscover {
-  margin-top: 5rem;
-  display: flex;
-  justify-content: center;
-}
-
 .modal-header i {
   padding: 5px 7px;
-
 }
 
 .modal-header i:hover {
@@ -1063,11 +871,6 @@ body {
   padding-top: 8rem;
 }
 
-.Blogs-heading {
-  display: flex;
-  justify-content: center;
-}
-
 .Blogs-heading h1 {
   margin: 0;
   padding: 0;
@@ -1081,7 +884,6 @@ body {
 }
 
 .Blogs-cards {
-  justify-content: center;
   gap: 30px;
   margin-top: 2rem;
 }
@@ -1100,7 +902,6 @@ body {
 
 .Blogs-card1 .Blogs-desc {
   height: 52px;
-
   margin-top: 24px;
   font-family: 'Poppins';
   font-style: normal;
@@ -1123,9 +924,6 @@ body {
 }
 
 .Blogs-ellipse-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
   margin-top: 47px;
 }
@@ -1177,11 +975,9 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-
 }
 
 .blog .blog-img img {
-
   max-height: 270px;
   border-radius: 0.5rem;
 }
@@ -1190,10 +986,7 @@ body {
   font-weight: 800;
 }
 
-
-
 @media(max-width:320px) {
-
   .Blogs-heading h1 {
     font-size: 40px;
   }
@@ -1398,89 +1191,6 @@ body {
   color: white;
 }
 
-.flatpickr-calendar {
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: none;
-}
-
-.flatpickr-months {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.flatpickr-prev-month,
-.flatpickr-next-month {
-  border: none;
-  background: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.flatpickr-prev-month:hover,
-.flatpickr-next-month:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-}
-
-.flatpickr-day.today,
-.flatpickr-day.selected {
-  background-color: #000;
-  color: #fff;
-  border-radius: 50%;
-}
-
-.flatpickr-day:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-}
-
-.flatpickr-weekdays,
-.flatpickr-days {
-  text-align: center;
-}
-
-.flatpickr-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-}
-
-.flatpickr-day {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.flatpickr-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-top: 1px solid #e6e6e6;
-}
-
-.flatpickr-button {
-  padding: 8px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.flatpickr-cancel {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.flatpickr-apply {
-  background-color: #000;
-  color: #fff;
-}
-
 @media (max-width: 1239px) {
 
   .plane2,
@@ -1617,7 +1327,6 @@ select,
 .plane1 img,
 .plane2 img {
   width: 100%;
-
 }
 
 @media (max-width: 768px) {

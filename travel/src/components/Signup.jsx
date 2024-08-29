@@ -156,7 +156,7 @@ function Signup() {
     }
 
     return (
-        <div className="container fcc mt-3">
+        <div className="container dja mt-3">
             <div className="signup-form">
                 <div className="fields-container">
                     <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>

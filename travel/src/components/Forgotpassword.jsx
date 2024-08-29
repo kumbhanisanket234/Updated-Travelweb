@@ -40,7 +40,7 @@ function Forgotpassword() {
 
     };
     return (
-        <div className="container fcc">
+        <div className="container dja">
             <div className="signup-form">
                 <div className="fields-container">
                     <h3 className="text-center">Forgot Password</h3>
