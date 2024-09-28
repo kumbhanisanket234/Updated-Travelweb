@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import img23 from './Images/img23.png'
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
+import instance from './axios_instance';
 
 
 function Cart() {
@@ -23,9 +24,8 @@ function Cart() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3001/favorites/${userId}`)
-            .then((response) => response.json())
-            .then((data) => setCart(data))
+        instance.get(`/favorites/${userId}`)
+            .then((response) => setCart(response.data))
             .catch((err) => console.log(err));
     }, [])
 
@@ -37,7 +37,7 @@ function Cart() {
         })
         setCart(Update);
 
-        axios.post('http://localhost:3001/favorites/remove', { productId, userId })
+        instance.post('/favorites/remove', { productId, userId })
             .then(() => {
                 toast.error('Removed From Favourite!')
             })

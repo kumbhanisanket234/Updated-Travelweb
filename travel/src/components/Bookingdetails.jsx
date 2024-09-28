@@ -17,7 +17,6 @@ const Bookingdetails = () => {
         data.map((item,index)=>{
           if(item.location.trim().toLowerCase()===destination.trim().toLowerCase()){
             setPackageDetails(item);
-            console.log(item.duration)
             localStorage.setItem('dealduration',item.duration)
 
           }

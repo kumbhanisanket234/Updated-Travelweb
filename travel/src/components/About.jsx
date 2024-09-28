@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast"
+import instance from './axios_instance';
 
 function About() {
   const [newIndex, setNewIndex] = useState(0);
@@ -26,11 +27,8 @@ function About() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:3001/reviews/getreviews', { withCredentials: true })
-      .then(response => response.json())
-      .then(data => {
-        setReviewsContainer(data)
-      })
+    instance.get('/reviews/getreviews', { withCredentials: true })
+      .then(response => setReviewsContainer(response.data))
       .catch(err => console.log(err));
   }, [add])
 
@@ -59,18 +57,12 @@ function About() {
 
       default:
 
-        fetch("http://localhost:3001/reviews/addreviews", {
-          method: "POST",
-          body: JSON.stringify({
-            name: name,
-            description: description,
-            location: location,
-            post: work,
-            // imgURL: img
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8"
-          }
+        instance.post("/reviews/addreviews", {
+          name: name,
+          description: description,
+          location: location,
+          post: work,
+          // imgURL: img
         })
           .then(() => {
             setShowModal(false)

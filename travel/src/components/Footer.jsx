@@ -24,9 +24,9 @@ function Footer() {
                 <p className='Footer-ourname'>Trabook</p>
                 <p className='Footer-line'>Book your trip in minute, get full Control for much longer.</p>
                 <div className="Footer-imgcontain d-flex ">
-                  <a href="https://www.facebook.com/profile.php?id=100069547090386" target="_blank" rel="noopener noreferrer"><img src={img29} alt="Facebook" /></a>
-                  <a href="https://www.instagram.com/kumbhani___sanket/" target='_blank' rel="noopener noreferrer"><img src={img30} alt="Instagram" /></a>
-                  <a href="https://x.com/KumbhaniSanket" target='_blank' rel="noopener noreferrer"><img src={img31} alt="Twitter" /></a>
+                  <a href="#https://www.facebook.com/Trabook#" rel="noopener noreferrer"><img src={img29} alt="Facebook" /></a>
+                  <a href="#https://www.instagram.com/Trabook#/"  rel="noopener noreferrer"><img src={img30} alt="Instagram" /></a>
+                  <a href="#https://x.com/Trabook#"  rel="noopener noreferrer"><img src={img31} alt="Twitter" /></a>
                 </div>
               </div>
 
@@ -35,8 +35,6 @@ function Footer() {
                   <ul>
                     <li id='Footer-listheading'>Company</li>
                     <li className='navlink' onClick={() => { scrollToComponent('about') }}>About</li>
-                    {/* <li>Careers</li> */}
-                    {/* <li>Logistic</li> */}
                     <a href='/privacy'><li className='navlink'>Privacy & Policy</li></a>
                   </ul>
                 </div>
@@ -44,16 +42,12 @@ function Footer() {
                   <ul>
                     <li id='Footer-listheading'>Contact</li>
                     <a href='/helps'><li className='navlink'>Help/FAQ</li></a>
-                    {/* <li>Press</li> */}
-                    {/* <li>Affiliates</li> */}
                   </ul>
                 </div>
                 <div className="Footer-list1">
                   <ul>
                     <li id='Footer-listheading'>More</li>
-                    {/* <li>Press Centre</li> */}
                     <li className="navlink" onClick={() => { scrollToComponent('Blog-containall') }}>Our Blogs</li>
-                    {/* <li>Low fare tips</li> */}
                   </ul>
                 </div>
               </div>

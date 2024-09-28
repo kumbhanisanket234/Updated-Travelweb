@@ -14,15 +14,21 @@ import About from './components/About'
 import Blogs from './components/Blogs'
 import Footer from './components/Footer'
 import Cart from './components/Cart';
-import Adddeals from './components/Adddeals';
 import Booking from './components/Booking';
 import Bookingdetails from './components/Bookingdetails';
-import Addplans from './components/Addplans';
 import Discover from './components/Discover';
 import Blog from './components/Blog';
 import PrivacyPolicy from './components/Privacypolicy';
 import Termsandconditions from './components/Termsandconditions';
 import Helpfaq from './components/Helpfaq';
+import Adminlogin from './admin/Adminlogin';
+import Adddeals from './admin/Adddeals';
+import Addplans from './admin/Addplans';
+import Adminhome from './admin/Adminhome';
+import Payment from './components/Payment';
+import Receipt from './components/Receipt';
+import Orders from './components/Orders';
+import Booked from './admin/Booked';
 
 function Home() {
     return (
@@ -45,8 +51,6 @@ function Home() {
                 <Route path='/forgotpassword' Component={Forgotpassword}></Route>
                 <Route path='/resetpassword/:id/:token' Component={Resetpassword}></Route>
                 <Route path='/cart' Component={Cart}></Route>
-                <Route path='/adddeals' Component={Adddeals}></Route>
-                <Route path='/addplans' Component={Addplans}></Route>
                 <Route path='/booking' Component={Booking}></Route>
                 <Route path='/bookingdetails' Component={Bookingdetails}></Route>
                 <Route path='/discover' Component={Discover}></Route>
@@ -54,6 +58,14 @@ function Home() {
                 <Route path='/privacy' Component={PrivacyPolicy}></Route>
                 <Route path='/terms' Component={Termsandconditions}></Route>
                 <Route path='/helps' Component={Helpfaq}></Route>
+                <Route path='/admin' Component={Adminlogin}></Route>
+                <Route path='/adminhome/:token' Component={Adminhome}></Route>
+                <Route path='/adddeals/:token' Component={Adddeals}></Route>
+                <Route path='/addplans/:token' Component={Addplans}></Route>
+                <Route path='/payment' Component={Payment}></Route>
+                <Route path='/receipt' Component={Receipt}></Route>
+                <Route path='/orders' Component={Orders}></Route>
+                <Route path='/booked' Component={Booked}></Route>
                 <Route path='*' Component={Error}></Route>
             </Routes>
 

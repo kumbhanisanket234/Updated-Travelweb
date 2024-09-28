@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
+import instance from './axios_instance';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Resetpassword() {
 
@@ -17,15 +19,15 @@ function Resetpassword() {
         e.preventDefault();
         switch (true) {
             case password === "":
-                alert("Please fill all the fields");
+                toast.error("Please fill all the fields");
                 break;
 
             case password !== confirmPassword:
-                alert("Password and Confirm Password should be same");
+                toast.error("Password and Confirm Password should be same");
                 break;
 
             default:
-                axios.post(`http://localhost:3001/reset-password/${id}/${token}`, { password }, { withCredentials: true })
+                instance.post(`/reset-password/${id}/${token}`, { password }, { withCredentials: true })
                     .then((response) => {
                         console.log(response)
                         if (response.data.Status === "Success") {
@@ -34,7 +36,7 @@ function Resetpassword() {
                     })
                     .catch((error) => {
                         console.error(error);
-                        alert(error.response.data);
+                        toast.error(error.response.data);
                     });
         }
 
@@ -42,6 +44,7 @@ function Resetpassword() {
 
     return (
         <div className="container dja">
+            <Toaster />
             <div className="signup-form m-0">
                 <div className="fields-container">
                     <h3 className="text-center">Reset Password</h3>

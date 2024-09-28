@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-
-import axios from 'axios';
+import instance from './axios_instance';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Signup() {
 
@@ -65,71 +65,71 @@ function Signup() {
 
     const handleSendOtp = () => {
         if (!validateEmail(email) || email === "") {
-            alert("Enter a valid email address");
+            toast.error("Enter a valid email address");
             return;
         }
 
-        axios.post('http://localhost:3001/sendOTP', { email })
+        instance.post('/sendOTP', { email })
             .then(response => {
                 console.log("response send otp", response)
                 if (response.data.status === "FAILED") {
-                    alert(response.data.message)
+                    toast.error(response.data.message)
                 }
                 else {
                     setOtpSent(true);
-                    alert("OTP sent to your email. Please enter the OTP to complete registration.");
+                    toast.success("OTP sent to your email. Please enter the OTP to complete registration.");
                     Timer();
                 }
 
             })
             .catch(error => {
                 console.error(error);
-                alert("Failed to send OTP");
+                toast.error("Failed to send OTP");
             });
     };
 
     const handleSubmit = (e) => {
         switch (true) {
             case firstName === "" || lastName === "" || email === "" || password === "" || confirmPassword === "" || phone === "":
-                alert("Please enter all details");
+                toast.error("Please enter all details");
                 break;
 
             case (!validateEmail(email)):
-                alert("Enter a valid email address");
+                toast.error("Enter a valid email address");
                 return false;
 
             case ((phone.toLowerCase() >= 'a' && phone.toLowerCase() <= 'z') || (phone.length != 10)):
-                alert("Enter Valid Phone Number");
+                toast.error("Enter Valid Phone Number");
                 break;
 
             case password !== confirmPassword:
-                alert("Password and Confirm Password should be same");
+                toast.error("Password and Confirm Password should be same");
                 break;
 
             default:
                 const otpValue = otp.join('');
                 if (otpValue === "") {
-                    alert("Enter OTP and verify your Email first!")
+                    toast.error("Enter OTP and verify your Email first!")
                 }
                 else {
-                    axios.post('http://localhost:3001/verifyOTP', { userId: email, otp: otpValue })
+                    instance.post('/verifyOTP', { userId: email, otp: otpValue })
                         .then(response => {
                             if (response.data.status === "SUCCESS") {
-                                axios.post('http://localhost:3001/register', { firstName, lastName, email, phone, password, confirmPassword })
+                                instance.post('/register', { firstName, lastName, email, phone, password, confirmPassword })
                                     .then((response) => {
                                         navigate('/login')
                                     })
                                     .catch((error) => {
                                         console.log(error);
-                                        alert(error.response.data);
+                                        toast.error(error.response.data);
                                     })
 
                             } else {
-                                alert(response.data.message);
+                                toast.error(response.data.message);
                             }
                         })
                         .catch(error => {
-                            alert("Failed to verify OTP. Please try again.");
+                            toast.error("Failed to verify OTP. Please try again.");
                         });
                 }
         }
@@ -143,20 +143,13 @@ function Signup() {
         window.open("http://localhost:3001/auth/github", "_self");
     }
 
-    const handleLoginWithLinkedIn = () => {
-        window.open("http://localhost:3001/auth/linkedin", "_self");
-    }
-
-    const handleLoginWithMicrosoft = () => {
-        window.open("http://localhost:3001/auth/microsoft", "_self");
-    }
-
     const hadleLoginWithFacebook = () => {
         window.open("http://localhost:3001/auth/facebook", "_self");
     }
 
     return (
         <div className="container dja mt-3">
+            <Toaster />
             <div className="signup-form">
                 <div className="fields-container">
                     <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>

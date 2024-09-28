@@ -27,7 +27,7 @@ function Hero() {
                     </div>
                 </div>
             </div>
-            <div className="navbar-main2">
+            {/* <div className="navbar-main2">
                 <div className="inr dja">
                     <div className="content dja">
                         <div className='d-flex gap-4'>
@@ -58,7 +58,7 @@ function Hero() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

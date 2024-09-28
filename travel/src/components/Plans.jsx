@@ -9,11 +9,12 @@ import Carousel from 'react-multi-carousel';
 import axios from 'axios';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
+import instance from './axios_instance';
 
 function Plansdetails() {
   const [plansContain, setPlansContain] = useState([]);
   const [active, setActive] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [cart, setCart] = useCartContext();
   let loginUserData = localStorage.getItem('user');
@@ -28,14 +29,12 @@ function Plansdetails() {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:3001/favorites/${userId}`)
-      .then((response) => response.json())
-      .then((data) => setCart(data))
+    instance.get(`/favorites/${userId}`)
+      .then((response) => setCart(response.data))
       .catch((err) => console.log(err));
 
-    fetch('http://localhost:3001/plans/getplans', { withCredentials: true })
-      .then(response => response.json())
-      .then(data => setPlansContain(data))
+    instance.get('/plans/getplans', { withCredentials: true })
+      .then(response => setPlansContain(response.data))
       .catch(err => console.log(err));
 
   }, [userId])
@@ -52,7 +51,7 @@ function Plansdetails() {
       })
       setCart(Update);
 
-      axios.post('http://localhost:3001/favorites/remove', { productId, userId })
+      instance.post('/favorites/remove', { productId, userId })
         .then(() => {
           toast.error('Removed From Favourite!')
         })
@@ -62,7 +61,7 @@ function Plansdetails() {
       return;
     }
 
-    axios.post("http://localhost:3001/favorites/add", { userId, productId, item })
+    instance.post("/favorites/add", { userId, productId, item })
       .then((data) => {
         setCart(data.data.favoriteProducts)
         toast.success('Added To Favourite!')
@@ -110,7 +109,8 @@ function Plansdetails() {
   };
 
   const handlePlansBooking = (item) => {
-    localStorage.setItem('destination',item.location);
+    localStorage.setItem('destination', item.location);
+    localStorage.setItem('price',item.price);
     navigate('/bookingdetails')
   }
 
@@ -149,14 +149,14 @@ function Plansdetails() {
                   <div className="Plans-card" key={index}>
                     <div className="Plans-box">
                       <div className="image-container">
-                        <img id='location-img' src={item.imgURL} alt="" onClick={()=>handlePlansBooking(item)}/>
+                        <img id='location-img' src={item.imgURL} alt="" onClick={() => handlePlansBooking(item)} />
                         <i className="fa-regular fa-heart like-icon" title={cart.some((cartValue) => cartValue._id === item._id) ? "Remove From Favourite" : "Add To Favourite"} style={cart.some((cartValue) => cartValue._id === item._id) ? { backgroundColor: '#FA7436', color: 'white' } : null} onClick={() => handleLikeBtn(item, index)}></i>
                       </div>
                       <div className="Plans-carddetail">
                         <div className='Plans-City d-flex justify-content-between'>
                           <p className='Plans-topics'>{item.location}</p>
                           <div className='Plans-amt'>
-                            <p>${item.price}k</p>
+                            <p>${item.price}</p>
                           </div>
                         </div>
                         <div className="detail-container mt-1 d-flex justify-content-between">

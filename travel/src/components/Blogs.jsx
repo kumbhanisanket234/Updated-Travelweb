@@ -2,14 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Blogscontain } from './Blogscontain';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Blogs() {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const carouselRef = useRef(null);
   const dotLength = [];
-  const navigate=useNavigate();
 
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
@@ -44,12 +43,12 @@ function Blogs() {
     dotLength.push(i);
   }
 
-  const handleBlog=(item)=>{
-    localStorage.setItem('blogtitle',item.title)
+  const handleBlog = (item) => {
+    localStorage.setItem('blogtitle', item.title)
   }
   return (
     <div className='Blogs' id='blogs'>
-      <div className="Blog-containall" id='Blog-containall'>
+      <div className="Blog-containall container" id='Blog-containall'>
         <div className="Blogs-heading dja">
           <h1>Get update with <span style={{ color: '#FA7436' }}>latest blog</span></h1>
         </div>
@@ -65,9 +64,9 @@ function Blogs() {
           >
             {Blogscontain.map((items, index) => (
               <div className="Blogs-card1 m-auto" key={index}>
-                <div><Link style={{display: "table-cell"}} to="/blog" target="_blank"><img src={items.img} alt="" onClick={()=>handleBlog(items)}/></Link></div>
+                <div><Link style={{ display: "table-cell" }} to="/blog" target="_blank"><img src={items.img} alt="" onClick={() => handleBlog(items)} /></Link></div>
                 <p className='Blogs-desc'>{items.title}</p>
-                <p className='Blogs-date'>{items.date}</p>  
+                <p className='Blogs-date'>{items.date}</p>
               </div>
             ))}
           </Carousel>

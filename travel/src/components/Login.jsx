@@ -8,6 +8,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser } from './store';
 import { Link } from 'react-router-dom';
+import instance from './axios_instance';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -31,14 +33,14 @@ function Login() {
         e.preventDefault();
         switch (true) {
             case email === "" || password === "":
-                alert("Please fill all the fields");
+                toast.error("Please fill all the fields");
                 break;
             case (!validateEmail(email)):
-                alert("Enter a valid email address");
+                toast.error("Enter a valid email address");
                 return false;
 
             default:
-                axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true })
+                instance.post('/login', { email, password }, { withCredentials: true })
                     .then((response) => {
                         localStorage.setItem('token', response.data.token);
                         localStorage.setItem('user', JSON.stringify({ ...response.data.user, fullName: response.data.user.firstName + " " + response.data.user.lastName }));
@@ -48,7 +50,7 @@ function Login() {
                     })
                     .catch((error) => {
                         console.error(error);
-                        alert(error.response.data);
+                        toast.error(error.response.data);
                     });
         }
 
@@ -68,8 +70,9 @@ function Login() {
     return (
         <>
             <div className="container dja mt-5">
+                <Toaster />
                 <div className="signup-form">
-                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button> 
+                    <button className=" btn-previous btn btn-default" id='back-btn' style={{ backgroundColor: "#ccc" }} onClick={() => { navigate("/") }}><i className="fa-solid fa-arrow-left"></i></button>
                     <div className="fields-container">
                         <h1 className="text-center">Login</h1>
                         <form className='form' onSubmit={handleSubmit}>

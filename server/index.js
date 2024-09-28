@@ -10,6 +10,7 @@ const ProductModel = require('./Models/Products');
 const PlansModel = require('./Models/Plans');
 const ReviewsModel = require('./Models/Reviews');
 const BookingdetailsModel = require('./Models/Bookingdetails');
+const OrderDetailsModel = require("./Models/Orderdetails");
 
 const session = require("express-session")
 const passport = require("passport");
@@ -31,6 +32,7 @@ const clientSecretFacebook = process.env.FACEBOOK_CLIENT_SECRET;
 const UserOtpVerification = require("./Models/OtpVerification");
 
 const nodemailer = require("nodemailer");
+
 
 const app = express()
 
@@ -66,10 +68,10 @@ app.get('/', (req, res) => {
 const verifyToken = async (req, res, next) => {
     let token;
     if (req.user) {
-        token = req.user.token || req.headers['x-access-token'];
+        token = req.user.token || req.headers['authorization']?.split(' ')[1];;
     }
     else {
-        token = req.cookies.token || req.header['x-access-token'];
+        token = req.cookies.token || req.headers['authorization']?.split(' ')[1];;
     }
 
     if (!token) {
@@ -572,6 +574,47 @@ app.get('/products/getdeals', async (req, res) => {
     }
 });
 
+//Delete Product Deals
+app.delete('/products/:id', async (req, res) => {
+    productId = req.params.id;
+    try {
+        const result = await ProductModel.findByIdAndDelete(productId);
+
+        if (!result) {
+            return res.status(404).send('Deal Package Not Found.')
+        }
+
+        return res.status(200).send('Delete Successfully...')
+    }
+    catch (err) {
+        console.log('Error occured at deleting deals package...', err);
+        res.status(500).send(err.message);
+    }
+})
+
+//Update Product Deals
+app.put('/products/:id', async (req, res) => {
+    const productId = req.params.id;
+    const updates = req.body;
+
+    try {
+        const result = await ProductModel.findByIdAndUpdate(productId, updates, {
+            new: true,
+            runValidators: true
+        })
+
+        if (!result) {
+            res.status(404).send('Deal Package Not Found')
+        }
+
+        return res.status(200).send('Update Successfully...')
+    }
+    catch (err) {
+        console.log('Error occured at updating deals package...', err);
+        res.status(500).send(err.message);
+    }
+})
+
 //Add Plans
 app.post('/plans/addplans', async (req, res) => {
     const plansDetail = req.body;
@@ -598,6 +641,44 @@ app.get('/plans/getplans', async (req, res) => {
     }
 });
 
+//Delete Plans
+app.delete('/plans/:id', async (req, res) => {
+    const plansId = req.params.id;
+
+    try {
+        const result = await PlansModel.findByIdAndDelete(plansId);
+
+        if (!result) {
+            res.status(404).send('Plans Not Found')
+        }
+        return res.status(200).send('Delete Successfully...')
+
+    } catch (err) {
+        console.log('Error occured at deleting plans...', err);
+        res.status(500).send(err.message);
+    }
+})
+
+//Update Plans
+app.put('/plans/:id', async (req, res) => {
+    const plansId = req.params.id;
+    const updates = req.body;
+    try {
+        const result = await PlansModel.findByIdAndUpdate(plansId, updates, {
+            new: true,
+            runValidators: true
+        })
+
+        if (!result) {
+            res.status(404).send('Plans Not Found')
+        }
+
+        return res.status(200).send('Update Successfully...')
+    } catch (err) {
+        console.log('Error occured at plans package updates...');
+        res.status(500).send(err.message);
+    }
+})
 //Add Reviews
 app.post('/reviews/addreviews', async (req, res) => {
     const reviewsDetail = req.body;
@@ -650,6 +731,67 @@ app.get('/Boookingdetails/getBoookingdetails', async (req, res) => {
     }
 });
 
+
+//Add Order Details
+app.post('/orderdetails', async (req, res) => {
+    const bookingData = req.body;
+    const cardNumber = req.body.cardNumber;
+
+    console.log(bookingData)
+    try {
+        const orderDetails = await OrderDetailsModel.create(
+            {
+                ...bookingData,
+                cardNumber: cardNumber
+            }
+        );
+        res.status(201).send(orderDetails);
+    } catch (err) {
+        console.log("Error Generating On Add OrderDetails....", err);
+        res.status(500).send({ message: "Error Occurred in Add OrderDetails", error: err });
+    }
+});
+//Get Order Details
+app.get('/user/orders/:id', async (req, res) => {
+    const userId = req.params.id;
+    try {
+        const orders = await OrderDetailsModel.find({ userId: userId });
+        res.status(200).send(orders);
+    } catch (err) {
+        console.log("Error Fetching User Orders....", err);
+        res.status(500).send({ message: "Error Occurred in Fetching User Orders", error: err });
+    }
+});
+
+app.get('/orders/all', async (req, res) => {
+   
+    try {
+        const orders = await OrderDetailsModel.find();
+        res.status(200).send(orders);
+    } catch (err) {
+        console.log("Error Fetching User Orders....", err);
+        res.status(500).send({ message: "Error Occurred in Fetching User Orders", error: err });
+    }
+});
+
+
+//Delete Order
+app.delete('/user/orders/:id', async (req, res) => {
+    const orderId = req.params.id;
+
+    try {
+        const result = await OrderDetailsModel.findByIdAndDelete(orderId);
+
+        if (!result) {
+            res.status(404).send('Order Not Found')
+        }
+        return res.status(200).send('Cancel Successfully...')
+
+    } catch (err) {
+        console.log('Error occured at Canceling Order...', err);
+        res.status(500).send(err.message);
+    }
+})
 // Add to favorites
 app.post('/favorites/add', async (req, res) => {
     try {

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import instance from './axios_instance';
 
 function Dealsdetails() {
   const [cardContain, setCardContain] = useState([]);
@@ -27,15 +28,13 @@ function Dealsdetails() {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:3001/favorites/${userId}`)
-      .then((response) => response.json())
-      .then((data) => setCart(data))
+    instance.get(`/favorites/${userId}`)
+      .then((response) => setCart(response.data))
       .catch((err) => console.log(err));
 
-    fetch('http://localhost:3001/products/getdeals')
-      .then(response => response.json())
-      .then(data => setCardContain(data))
-      .catch(err => console.log(err));
+    instance.get('/products/getdeals')
+      .then(response => setCardContain(response.data))
+      .catch(err => console.log(err))
 
   }, [userId])
 
@@ -51,7 +50,7 @@ function Dealsdetails() {
       })
       setCart(Update);
 
-      axios.post('http://localhost:3001/favorites/remove', { productId, userId })
+      instance.post('/favorites/remove', { productId, userId })
         .then(() => {
           toast.error('Removed From Favourite!')
         })
@@ -61,7 +60,7 @@ function Dealsdetails() {
       return;
     }
 
-    axios.post("http://localhost:3001/favorites/add", { userId, productId, item })
+    instance.post("/favorites/add", { userId, productId, item })
       .then((data) => {
         setCart(data.data.favoriteProducts)
         toast.success('Added To Favourite!')
@@ -72,7 +71,8 @@ function Dealsdetails() {
   }
 
   const handleDealsBooking = (item) => {
-    localStorage.setItem('destination',item.city);
+    localStorage.setItem('destination', item.city);
+    localStorage.setItem('price',item.price);
     navigate('/bookingdetails')
   }
 
@@ -130,7 +130,7 @@ function Dealsdetails() {
           </div>
 
           <div className="row dja gy-4 mt-3">
-          {/* <Toaster /> */}
+            {/* <Toaster /> */}
             <Carousel
               responsive={responsive}
               keyBoardControl={true}

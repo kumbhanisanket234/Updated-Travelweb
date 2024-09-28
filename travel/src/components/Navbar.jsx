@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import profileimg from './Images/img10.webp';
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser } from './store';
 import { Badge } from 'antd';
 import { useCartContext } from "../context/cartcontext";
+import instance from "./axios_instance";
 
 function Navbar() {
 
@@ -51,9 +51,9 @@ function Navbar() {
 
     const getuser = async () => {
         try {
-            const res = await axios.get("http://localhost:3001/login/success", { withCredentials: true });
+            const res = await instance.get("/login/success", { withCredentials: true });
             // setUserData(res.data.user);
-            dispatch(setUser(res.data.user));   
+            dispatch(setUser(res.data.user));
 
             if (res.data.user.fullName) {
                 setDisplayName(res.data.user.fullName);
@@ -94,8 +94,8 @@ function Navbar() {
                     <ul className="navitems dja">
                         <li className="navlink" onClick={() => { scrollToComponent('hero') }}>Home</li>
                         <li className="navlink" onClick={() => { scrollToComponent('about') }}>About</li>
-                        <li className="navlink" onClick={() => { scrollToComponent('deals') }}>Destination</li>
-                        <li className="navlink" onClick={() => { scrollToComponent('plans') }}>Tour</li>
+                        <li className="navlink" onClick={() => { scrollToComponent('deals') }}>Packages</li>
+                        <li className="navlink"><a className="navlink" href="/orders">Booked</a></li>
                         <li className="navlink" onClick={() => { scrollToComponent('blogs') }}>Blog</li>
                         <li className="navlink">
                             <Badge count={cart.length} showZero>
@@ -109,7 +109,7 @@ function Navbar() {
                         Object.keys(userData).length > 0 ? (
                             <>
                                 <button className="btn btn-default signup"><NavLink className="menu_active signup-hover" aria-current="page" to="/" onClick={handleLogout} >Logout</NavLink></button>
-                                <button className="btn btn-default login"><div className="navlink text-dark" style={{ fontWeight: 'bold' }}>{displayName}</div></button>
+                                <button className="btn btn-default login"><div className="navlink text-dark" style={{ fontWeight: 'bold',textTransform:'capitalize' }}>{displayName}</div></button>
                                 <img src={userData.image ? userData.image : profileimg} alt="Profile pic" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
                             </>
                         )

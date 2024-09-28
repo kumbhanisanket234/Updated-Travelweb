@@ -1,11 +1,13 @@
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
 
 const cartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);    
+    const [cart, setCart] = useState([]);
+    const TOKEN = "sdrheunNAMsndfwejnajNSUFFUEnsdkcnskdfhifhsdnaskdnsadiheirhefnasdndcmasd,dnfsjfhsuhfuicnmnasm==asffsfsdfsdff,sdff"
+
     return (
-        <cartContext.Provider value={[cart, setCart]}>
+        <cartContext.Provider value={[cart, setCart, TOKEN]}>
             {children}
         </cartContext.Provider>
     )

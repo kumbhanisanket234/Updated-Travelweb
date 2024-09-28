@@ -745,12 +745,12 @@ p {
 }
 
 .About {
-  height: 100vh;
   background-color: #F7F8FC;
 }
 
 .About-containAll {
   height: 100%;
+  padding: 8rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: normal;
@@ -786,7 +786,7 @@ p {
 }
 
 .About-client1 {
-  width: 100%;  
+  width: 100%;
 }
 
 .About-client1 img {
@@ -834,7 +834,8 @@ p {
   margin-top: 3px;
 }
 
-.About-review .userlocation,.About-client2 .userdetail {
+.About-review .userlocation,
+.About-client2 .userdetail {
   font-weight: 500;
   font-size: 14px;
   color: #666666;
@@ -993,9 +994,9 @@ p {
 }
 
 .Footer {
-  background-color: #FEFCFB;
   display: flex;
   justify-content: center;
+  background-color: #F7F8FC;
 }
 
 .container {
@@ -1004,16 +1005,11 @@ p {
 }
 
 .Footer-downdiv {
-  width: 98.8vw;
-  background-color: #F7F8FC;
-  padding: 50px 20px;
+  width: 100%;
+  padding: 100px 20px 20px 20px;
   display: flex;
   justify-content: center;
-  margin-top: -110px;
-}
-
-.Footer-containdetails {
-  margin-top: 100px;
+  align-items: center;
 }
 
 .Footer-details {
@@ -1191,17 +1187,7 @@ p {
   color: white;
 }
 
-@media (max-width: 1239px) {
 
-  .plane2,
-  .plane1 {
-    display: none;
-  }
-
-  .booking {
-    justify-content: center;
-  }
-}
 
 .booking {
   background-color: #d67447;
@@ -1212,8 +1198,20 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
   flex-wrap: wrap;
+}
+
+@media (max-width: 1239px) {
+
+  .plane2,
+  .plane1 {
+    display: none;
+  }
+
+  .booking {
+    justify-content: center;
+  }
 }
 
 .form-container {
@@ -1404,4 +1402,278 @@ select,
 
 .addproduct-container:hover {
   border: 1px solid black;
+}
+
+/* Table.css */
+
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 auto;
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.responsive-table th {
+  background-color: #f2f2f2;
+}
+
+.responsive-table .heading {
+  background-color: unset;
+  border: unset;
+  text-align: center;
+  font-size: 30px;
+}
+
+.btn-update,
+.btn-delete {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-update {
+  background-color: #4caf50;
+}
+
+.btn-delete {
+  background-color: #f44336;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  text-align: center;
+}
+
+/* src/PaymentPage.css */
+
+.payment-page {
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.payment-page h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.payment-page .payment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-page .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.payment-page label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.payment-page input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.payment-page input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.payment-page button {
+  padding: 0.75rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.payment-page button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+  .payment-page {
+      padding: 1rem;
+  }
+
+  .payment-page h2 {
+      font-size: 1.5rem;
+  }
+
+  .payment-page button {
+      font-size: 14px;
+  }
+}
+
+.receipt-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.receipt-title {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.divider {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  margin: 10px 0;
+}
+
+.receipt-details {
+  margin-bottom: 20px;
+}
+
+.detail-value {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+.total-cost {
+  font-size: 1.2em;
+  color: #e74c3c;
+}
+
+.thank-you {
+  text-align: center;
+  color: #27ae60;
+}
+
+.contact-info {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.booking-details-title, .payment-method-title {
+  color: #34495e;
+}
+
+.booking-details-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.booking-details-list li {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.disclaimer {
+  text-align: center;
+  color: #7f8c8d;
+  margin-top: 20px;
+}
+
+/* PaymentDetails.css */
+
+.payment-details {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.payment-details h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-details th, .payment-details td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.payment-details th {
+  background-color: #f2f2f2;
+}
+
+.payment-details tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* OrderTable.css */
+/* Orders.css */
+.orders-container {
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  /* margin: 20px; */
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1em; /* Use a smaller font size for better fit */
+  text-align: left;
+}
+
+.order-table th,
+.order-table td {
+  padding: 10px 12px; /* Adjust padding */
+  border: 1px solid #ddd;
+}
+
+.order-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.order-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.order-table .btn-update {
+  padding: 5px 10px;
+  background-color: #f44336; /* Red background for cancel button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-table  .btn-update:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }

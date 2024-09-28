@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import axios from 'axios';
+import instance from './axios_instance';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Forgotpassword() {
     const [email, setEmail] = useState("");
@@ -17,30 +19,31 @@ function Forgotpassword() {
         e.preventDefault();
         switch (true) {
             case email === "":
-                alert("Please fill all the fields");
+                toast.error("Please fill all the fields");
                 break;
             case (!validateEmail(email)):
-                alert("Enter a valid email address");
+                toast.error("Enter a valid email address");
                 return false;
 
             default:
-                axios.post('http://localhost:3001/forgotpassword', { email }, { withCredentials: true })
+                instance.post('/forgotpassword', { email }, { withCredentials: true })
                     .then((response) => {
-                        console.log(response)   
+                        console.log(response)
                         if (response.data.Status === "Success") {
-                            alert("Reset Password Link Sent To Your Email!")
+                            toast.error("Reset Password Link Sent To Your Email!")
                             navigate('/login')
                         }
                     })
                     .catch((error) => {
                         console.error(error);
-                        alert(error.response.data);
+                        toast.error(error.response.data);
                     });
         }
 
     };
     return (
         <div className="container dja">
+            <Toaster />
             <div className="signup-form">
                 <div className="fields-container">
                     <h3 className="text-center">Forgot Password</h3>
