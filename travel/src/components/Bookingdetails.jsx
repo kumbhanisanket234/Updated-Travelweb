@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from './axios_instance';
+
 
 const Bookingdetails = () => {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Bookingdetails = () => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3001/Boookingdetails/getBoookingdetails")
+    fetch(`${BASE_URL}/Boookingdetails/getBoookingdetails`)
       .then(response => response.json())
       .then(data => {
         data.map((item,index)=>{

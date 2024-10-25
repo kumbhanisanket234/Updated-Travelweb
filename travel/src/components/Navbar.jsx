@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser } from './store';
 import { Badge } from 'antd';
 import { useCartContext } from "../context/cartcontext";
-import instance from "./axios_instance";
+import instance, { BASE_URL } from "./axios_instance";
 
 function Navbar() {
 
@@ -79,7 +79,7 @@ function Navbar() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
-        window.open("http://localhost:3001/logout", "_self")
+        window.open(`${BASE_URL}/logout`, "_self")
         dispatch(clearUser());
     }
 

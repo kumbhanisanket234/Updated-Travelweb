@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser } from './store';
 import { Link } from 'react-router-dom';
-import instance from './axios_instance';
+import instance, { BASE_URL } from './axios_instance';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
@@ -57,15 +57,15 @@ function Login() {
     };
 
     const handleLoginWithGoogle = () => {
-        window.open("http://localhost:3001/auth/google", "_self");
+        window.open(`${BASE_URL}/auth/google`, "_self");
     }
 
     const handleLoginWithGithub = () => {
-        window.open("http://localhost:3001/auth/github", "_self");
+        window.open(`${BASE_URL}/auth/github`, "_self");
     }
 
     const hadleLoginWithFacebook = () => {
-        window.open("http://localhost:3001/auth/facebook", "_self");
+        window.open(`${BASE_URL}/auth/facebook`, "_self");
     }
     return (
         <>

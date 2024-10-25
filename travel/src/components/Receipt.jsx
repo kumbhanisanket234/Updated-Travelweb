@@ -9,6 +9,7 @@ function Receipt() {
 
   useEffect(() => {
     setBookingData(order);
+    console.log(bookingData)
   }, [])
 
   return (
@@ -20,9 +21,12 @@ function Receipt() {
         <p><strong>Name:</strong> <span className="detail-value">{bookingData.fname} {bookingData.lname}</span></p>
         <p><strong>Phone:</strong> <span className="detail-value">{bookingData.phone}</span></p>
         <p><strong>Email:</strong> <span className="detail-value">{bookingData.email}</span></p>
+        <p><strong>From:</strong> <span className="detail-value">{bookingData.departureCity}</span></p>
+        <p><strong>To:</strong> <span className="detail-value">{bookingData.destination}</span></p>
+
         <p><strong>Departure Date:</strong> <span className="detail-value">{bookingData.departureDate}</span></p>
         <p><strong>Return Date:</strong> <span className="detail-value">{bookingData.returnDate}</span></p>
-        <p><strong>Total Cost:</strong> <span className="detail-value total-cost">${bookingData.totalCost}</span></p>
+        <p><strong>Paid:</strong> <span className="detail-value total-cost">${bookingData.totalCost}</span></p>
       </div>
       <hr className="divider" />
       <h3 className="thank-you">Thank you for your booking!</h3>

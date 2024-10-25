@@ -424,7 +424,6 @@ passport.use(
                         googleEmail: profile.emails[0].value,
                         image: profile.photos[0].value
                     })
-                    console.log(user)
 
                     const token = jwt.sign(
                         { id: user._id, googleEmail: profile.emails[0].value, fullName: profile.displayName, image: profile.photos[0].value },
@@ -764,7 +763,7 @@ app.get('/user/orders/:id', async (req, res) => {
 });
 
 app.get('/orders/all', async (req, res) => {
-   
+
     try {
         const orders = await OrderDetailsModel.find();
         res.status(200).send(orders);
@@ -868,6 +867,6 @@ app.post('/favorites/remove', async (req, res) => {
     }
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log("Server is running")
 })

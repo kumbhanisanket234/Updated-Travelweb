@@ -99,7 +99,7 @@ function Orders() {
 
                 </tbody>
             </table>
-        </div >
+        </div>
     )
 }
 

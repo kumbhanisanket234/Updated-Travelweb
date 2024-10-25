@@ -1,10 +1,13 @@
-import React,{useState,useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useNavigate,useParams} from 'react-router-dom';
 import instance from '../components/axios_instance';
+import { useCartContext } from '../context/cartcontext';
 function Booked() {
 
+    const [a, b, TOKEN] = useCartContext();
     const navigate = useNavigate();
     const [booked, setBooked] = useState([]);
+    const { token } = useParams();
 
     const fetchOrderDetails = () => {
         instance.get('/orders/all')
@@ -16,6 +19,12 @@ function Booked() {
                 console.log(error);
             });
     }
+
+    useEffect(() => {
+        if (TOKEN != token) {
+            navigate('/error');
+        }
+    }, [token, navigate])
 
     useEffect(() => {
         fetchOrderDetails();

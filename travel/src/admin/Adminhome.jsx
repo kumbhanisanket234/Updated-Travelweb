@@ -107,7 +107,7 @@ function Adminhome() {
                         <th colSpan="6" className='heading'>Deals Package</th>
 
                         <th style={{ backgroundColor: 'unset', border: 'unset' }} ><button className="btn-update" onClick={() => { navigate(`/adddeals/${TOKEN}`) }}>Add</button></th>
-                        <th style={{ backgroundColor: 'unset', border: 'unset' }} ><button className="btn-update" onClick={() => { navigate(`/booked`) }}>Booked</button></th>
+                        <th style={{ backgroundColor: 'unset', border: 'unset' }} ><button className="btn-update" onClick={() => { navigate(`/booked/${TOKEN}`) }}>Booked</button></th>
 
 
                     </tr>

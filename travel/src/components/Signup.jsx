@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import instance from './axios_instance';
+import instance, { BASE_URL } from './axios_instance';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Signup() {
@@ -136,15 +136,15 @@ function Signup() {
     };
 
     const handleLoginWithGoogle = () => {
-        window.open("http://localhost:3001/auth/google", "_self");
+        window.open(`${BASE_URL}/auth/google`, "_self");
     }
 
     const handleLoginWithGithub = () => {
-        window.open("http://localhost:3001/auth/github", "_self");
+        window.open(`${BASE_URL}/auth/github`, "_self");
     }
 
     const hadleLoginWithFacebook = () => {
-        window.open("http://localhost:3001/auth/facebook", "_self");
+        window.open(`${BASE_URL}/auth/facebook`, "_self");
     }
 
     return (

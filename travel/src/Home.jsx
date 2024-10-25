@@ -62,10 +62,10 @@ function Home() {
                 <Route path='/adminhome/:token' Component={Adminhome}></Route>
                 <Route path='/adddeals/:token' Component={Adddeals}></Route>
                 <Route path='/addplans/:token' Component={Addplans}></Route>
+                <Route path='/booked/:token' Component={Booked}></Route>
                 <Route path='/payment' Component={Payment}></Route>
                 <Route path='/receipt' Component={Receipt}></Route>
                 <Route path='/orders' Component={Orders}></Route>
-                <Route path='/booked' Component={Booked}></Route>
                 <Route path='*' Component={Error}></Route>
             </Routes>
 
