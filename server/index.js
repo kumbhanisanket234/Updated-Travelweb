@@ -56,10 +56,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
-// mongoose.connect("mongodb://127.0.0.1:27017/user", { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then((res) => console.log('Database Connected'))
-//     .catch((err) => console.log('Failed To Connect Database', err))
-
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((res) => console.log('Database Connected'))
     .catch((err) => console.log('Failed To Connect Database', err))
